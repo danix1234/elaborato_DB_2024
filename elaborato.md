@@ -49,5 +49,5 @@ La piattaforma fornisce le seguenti funzionalità all'utente:
 
 Inoltre, l'amministratore di sistema potrà:
     - aggiungere o rimuovere i modelli aereoplani posseduti dalla compagnia, e gli aereoporti in cui la compagnia opera
-    - aggiungere o rimuovere (se il volo viene cancellato) i voti
+    - aggiungere o rimuovere (se il volo viene cancellato) i voli
     - visualizzare gli utenti che hanno comprato i biglietti per uno specifico volo
