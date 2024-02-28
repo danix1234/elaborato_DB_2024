@@ -42,12 +42,12 @@ modello hanno identica quantità di posti nelle varie classi di servizio).
 L'utente potrà inoltre aggiungere dei servizi extra (quali bagaglio aggiuntivo, scelta della classe,..) e visualizzare una lista di tutti 
 i biglietti comprati, con tutte le informazione riguardanti suddetti voli.
 
-* funzionalità dell'end user
-    - iscrizione utente
+* funzionalità per l'utente:
+    - iscrizione all'applicazione
     - ricercare e successivamente comprare biglietti tra due aereoporti
     - visualizzazione lista biglietti comprati
 
-* funzionalità dell'admin
+* funzionalità per l'amministratore:
     - aggiunta o rimozione modelli aereoplani posseduti dalla compagnia, e degli aereoporti in cui la compagnia opera
     - aggiunta o rimozione (se il volo viene cancellato) dei biglietti per certe tratte
     - visualizzare utenti che hanno comprato i biglietti per uno specifico volo
