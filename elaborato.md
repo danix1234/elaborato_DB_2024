@@ -36,7 +36,7 @@ Ogni utente si deve registrare all'applicazione, inserendo nome, cognome, email 
 Un utente può ricercare i voli offerti dalla compagnia aerea su una tratta specificata, e per ogni risultato si potranno vedere i prezzi 
 per le varie classi di servizio e la quantità di posti disponibili.
 
-La compagnia possiede vari modelli di aerei, ognuno con differenti quantità di posti (due aerei dello stesso 
+La compagnia possiede vari modelli di aerei, ognuno con differenti quantità di posti disponibili (due aerei dello stesso 
 modello hanno identica quantità di posti).
 
 L'utente potrà inoltre aggiungere dei servizi extra (quali bagaglio aggiuntivo, scelta della classe,..) e visualizzare una lista di tutti 
