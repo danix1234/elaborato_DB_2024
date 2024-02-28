@@ -43,7 +43,7 @@ L'utente potrà inoltre aggiungere dei servizi extra (quali bagaglio aggiuntivo,
 i biglietti comprati, con tutte le informazione riguardanti i voli.
 
 La piattaforma fornisce le seguenti funzionalità all'utente:
-    - iscrizione all'applicazione
+    - iscriversi all'applicazione
     - ricercare e successivamente comprare biglietti per un volo
     - visualizzare la lista completa dei biglietti comprati
 
