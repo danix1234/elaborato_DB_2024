@@ -44,10 +44,10 @@ i biglietti comprati, con tutte le informazione riguardanti suddetti voli.
 
 La piattaforma fornisce le seguenti funzionalità all'utente:
     - iscrizione all'applicazione
-    - ricercare e successivamente comprare biglietti tra due aereoporti
-    - visualizzazione lista biglietti comprati
+    - ricercare e successivamente comprare biglietti per un volo
+    - visualizzare la lista completa dei biglietti comprati
 
 Inoltre, l'amministratore di sistema potrà:
-    - aggiunta o rimozione modelli aereoplani posseduti dalla compagnia, e degli aereoporti in cui la compagnia opera
-    - aggiunta o rimozione (se il volo viene cancellato) dei biglietti per certe tratte
-    - visualizzare utenti che hanno comprato i biglietti per uno specifico volo
+    - aggiungere o rimuovere i modelli aereoplani posseduti dalla compagnia, e gli aereoporti in cui la compagnia opera
+    - aggiungere o rimuovere (se il volo viene cancellato) i voti
+    - visualizzare gli utenti che hanno comprato i biglietti per uno specifico volo
