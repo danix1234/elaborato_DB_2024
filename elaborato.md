@@ -39,7 +39,7 @@ per le varie classi di servizio e la quantità di posti disponibili.
 La compagnia possiede vari modelli di aerei, ognuno con differenti quantità di posti disponibili (due aerei dello stesso 
 modello hanno identica quantità di posti).
 
-L'utente potrà inoltre aggiungere dei servizi extra (quali bagaglio aggiuntivo, scelta della classe,..) e visualizzare una lista di tutti 
+L'utente potrà inoltre aggiungere dei servizi extra (quali bagaglio aggiuntivo, pranzo a bordo,..) e visualizzare una lista di tutti 
 i biglietti comprati, con tutte le informazione riguardanti i voli.
 
 La piattaforma fornisce le seguenti funzionalità all'utente:
