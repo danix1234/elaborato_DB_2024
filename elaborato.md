@@ -40,7 +40,7 @@ La compagnia possiede vari modelli di aerei, ognuno con differenti quantità di 
 modello hanno identica quantità di posti).
 
 L'utente potrà inoltre aggiungere dei servizi extra (quali bagaglio aggiuntivo, scelta della classe,..) e visualizzare una lista di tutti 
-i biglietti comprati, con tutte le informazione riguardanti suddetti voli.
+i biglietti comprati, con tutte le informazione riguardanti i voli.
 
 La piattaforma fornisce le seguenti funzionalità all'utente:
     - iscrizione all'applicazione
