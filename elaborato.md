@@ -29,6 +29,8 @@ i biglietti comprati, con tutte le informazione riguardanti suddetti voli.
 # [x] LINGUGAGGIO E PIATTAFORMA
 java & Linux
 
+
+
 # DESCRIZIONE IN BELLA
 L'obiettivo è la creazione di un applicazione per la vendita dei biglietti per i voli effettuati da una compagnia aerea. 
 
@@ -51,3 +53,10 @@ Inoltre, l'amministratore di sistema potrà:
     - aggiungere o rimuovere i modelli aereoplani posseduti dalla compagnia, e gli aereoporti in cui la compagnia opera
     - aggiungere o rimuovere (se il volo viene cancellato) i voli
     - visualizzare gli utenti che hanno comprato i biglietti per uno specifico volo
+
+
+
+# [ ] OPERAZIONE AGGREGATE (richieste dal tutor)
+- operazione dell'admin:
+    - occupazione media di un certo volo in un periodo [`IDEA DEL TUTOR, CERCA DI EVITARLA`]
+    - ?
