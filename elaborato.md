@@ -55,8 +55,8 @@ Inoltre, l'amministratore di sistema potrà:
     - visualizzare gli utenti che hanno comprato i biglietti per uno specifico volo
 
 
+# OPERAZIONI AGGREGATE NON BANALI (richieste dalla email)
+- vedere qual è l'occupazione media di un certo volo per ciascun giorno in un dato range
+- capire quali sono le tratte più trafficate.
 
-# [ ] OPERAZIONE AGGREGATE (richieste dal tutor)
-- operazione dell'admin:
-    - occupazione media di un certo volo in un periodo [`IDEA DEL TUTOR, CERCA DI EVITARLA`]
-    - ?
+
