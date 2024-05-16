@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-cd /personal/repos/elaborato_DB_2024 || exit 1
+cd ~/.personal/repos/elaborato_DB_2024 || exit 1
 
 TMP_DIR=/tmp/relazione_preview_dirAWuaywdjb
 mkdir -p "${TMP_DIR}"
