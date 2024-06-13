@@ -7,6 +7,7 @@ public final class App {
     public static void main(String[] args) {
         var frame = new JFrame();
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(120, 100);
     }
 }
