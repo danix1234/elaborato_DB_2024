@@ -8,6 +8,7 @@ public final class App {
         var frame = new JFrame();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(120, 100);
+        frame.setSize(500, 600);
+        frame.setLocationRelativeTo(null);
     }
 }
