@@ -11,4 +11,4 @@ cp Relazione.odt "${TMP_DIR}"
 cd "${TMP_DIR}" || exit 1
 
 libreoffice --convert-to pdf Relazione.odt 1>/dev/null
-xdg-open Relazione.pdf &>/dev/null &
+pgrep okular &>/dev/null || xdg-open Relazione.pdf &>/dev/null &
