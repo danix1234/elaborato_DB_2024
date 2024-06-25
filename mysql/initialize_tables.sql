@@ -61,24 +61,24 @@ insert into CLASSE values
 ('business','servizio incluso, poltrone spaziose');
 
 insert into RAGGRUPPAMENTO values
-('Boeing', '737 MAX', 'economica', 20.0),
-('Boeing', '737 MAX', 'prima', 45.5),
-('Boeing', '737 MAX', 'business', 100.0),
-('Boeing', '767', 'economica', 25.0),
-('Boeing', '767', 'prima', 50.5),
-('Boeing', '767', 'business', 110.0),
-('Boeing', '777', 'economica', 30.0),
-('Boeing', '777', 'prima', 60.0),
-('Boeing', '777', 'business', 115.0),
-('Airbus', 'A320', 'economica', 15.0),
-('Airbus', 'A320', 'prima', 40.0),
-('Airbus', 'A320', 'business', 80.0),
-('Airbus', 'A330', 'economica', 25.0),
-('Airbus', 'A330', 'prima', 50),
-('Airbus', 'A330', 'business', 105.0),
-('Airbus', 'A380', 'economica', 40.0),
-('Airbus', 'A380', 'prima', 65.0),
-('Airbus', 'A380', 'business', 150.0);
+('Boeing', '737 MAX', 'economica', 20.00),
+('Boeing', '737 MAX', 'prima', 45.50),
+('Boeing', '737 MAX', 'business', 100.00),
+('Boeing', '767', 'economica', 25.00),
+('Boeing', '767', 'prima', 50.50),
+('Boeing', '767', 'business', 110.00),
+('Boeing', '777', 'economica', 30.00),
+('Boeing', '777', 'prima', 60.00),
+('Boeing', '777', 'business', 115.00),
+('Airbus', 'A320', 'economica', 15.00),
+('Airbus', 'A320', 'prima', 40.00),
+('Airbus', 'A320', 'business', 80.00),
+('Airbus', 'A330', 'economica', 25.00),
+('Airbus', 'A330', 'prima', 50.00),
+('Airbus', 'A330', 'business', 105.00),
+('Airbus', 'A380', 'economica', 40.00),
+('Airbus', 'A380', 'prima', 65.00),
+('Airbus', 'A380', 'business', 150.00);
 
 insert into AEROPORTO values
 ('LIMC','MXP','Italia','Milano'),
@@ -112,3 +112,31 @@ insert into AEROPLANO values
 ('Airbus', 'A330', '6', true), ('Airbus', 'A330', '7', true), ('Airbus', 'A330', '8', false), ('Airbus', 'A330', '9', true), ('Airbus', 'A330', '10', true),
 ('Airbus', 'A380', '1', true), ('Airbus', 'A380', '2', false), ('Airbus', 'A380', '3', true), ('Airbus', 'A380', '4', true), ('Airbus', 'A380', '5', true),
 ('Airbus', 'A380', '6', true), ('Airbus', 'A380', '7', false), ('Airbus', 'A380', '8', true), ('Airbus', 'A380', '9', true), ('Airbus', 'A380', '10', true);
+
+insert into POSTO values
+( 'Boeing', '737 MAX', '01A', 5.00, 'economica'), ( 'Boeing', '737 MAX', '01B', 5.00, 'economica'), ( 'Boeing', '737 MAX', '01C', 5.00, 'economica'), ( 'Boeing', '737 MAX', '01D', 5.00, 'economica'),
+( 'Boeing', '737 MAX', '02A', null, 'economica'), ( 'Boeing', '737 MAX', '02B', null, 'economica'), ( 'Boeing', '737 MAX', '02C', null, 'economica'), ( 'Boeing', '737 MAX', '02D', null, 'economica'),
+( 'Boeing', '737 MAX', '03A', null, 'economica'), ( 'Boeing', '737 MAX', '03B', null, 'economica'), ( 'Boeing', '737 MAX', '03C', null, 'economica'), ( 'Boeing', '737 MAX', '03D', null, 'economica'),
+( 'Boeing', '737 MAX', '04A', null, 'economica'), ( 'Boeing', '737 MAX', '04B', null, 'economica'), ( 'Boeing', '737 MAX', '04C', null, 'economica'), ( 'Boeing', '737 MAX', '04D', null, 'economica'),
+( 'Boeing', '737 MAX', '05A', null, 'economica'), ( 'Boeing', '737 MAX', '05B', null, 'economica'), ( 'Boeing', '737 MAX', '05C', null, 'economica'), ( 'Boeing', '737 MAX', '05D', null, 'economica'),
+( 'Boeing', '737 MAX', '06A', null, 'economica'), ( 'Boeing', '737 MAX', '06B', null, 'economica'), ( 'Boeing', '737 MAX', '06C', null, 'economica'), ( 'Boeing', '737 MAX', '06D', null, 'economica'),
+( 'Boeing', '737 MAX', '07A', null, 'economica'), ( 'Boeing', '737 MAX', '07B', null, 'economica'), ( 'Boeing', '737 MAX', '07C', null, 'economica'), ( 'Boeing', '737 MAX', '07D', null, 'economica'),
+( 'Boeing', '737 MAX', '08A', null, 'economica'), ( 'Boeing', '737 MAX', '08B', null, 'economica'), ( 'Boeing', '737 MAX', '08C', null, 'economica'), ( 'Boeing', '737 MAX', '08D', null, 'economica'),
+( 'Boeing', '737 MAX', '09A', null, 'economica'), ( 'Boeing', '737 MAX', '09B', null, 'economica'), ( 'Boeing', '737 MAX', '09C', null, 'economica'), ( 'Boeing', '737 MAX', '09D', null, 'economica'),
+( 'Boeing', '737 MAX', '10A', 2.50, 'economica'), ( 'Boeing', '737 MAX', '10B', 2.50, 'economica'), ( 'Boeing', '737 MAX', '10C', 2.50, 'economica'), ( 'Boeing', '737 MAX', '10D', 2.50, 'economica'),
+( 'Boeing', '737 MAX', '11A', null, 'prima'), ( 'Boeing', '737 MAX', '11B', null, 'prima'), ( 'Boeing', '737 MAX', '11C', null, 'prima'), ( 'Boeing', '737 MAX', '11D', null, 'prima'),
+( 'Boeing', '737 MAX', '12A', null, 'prima'), ( 'Boeing', '737 MAX', '12B', null, 'prima'), ( 'Boeing', '737 MAX', '12C', null, 'prima'), ( 'Boeing', '737 MAX', '12D', null, 'prima'),
+( 'Boeing', '737 MAX', '13A', null, 'prima'), ( 'Boeing', '737 MAX', '13B', null, 'prima'), ( 'Boeing', '737 MAX', '13C', null, 'prima'), ( 'Boeing', '737 MAX', '13D', null, 'prima'),
+( 'Boeing', '737 MAX', '14A', null, 'prima'), ( 'Boeing', '737 MAX', '14B', null, 'prima'), ( 'Boeing', '737 MAX', '14C', null, 'prima'), ( 'Boeing', '737 MAX', '14D', null, 'prima'),
+( 'Boeing', '737 MAX', '15A', 9.50, 'prima'), ( 'Boeing', '737 MAX', '15B', 9.50, 'prima'), ( 'Boeing', '737 MAX', '15C', 9.50, 'prima'), ( 'Boeing', '737 MAX', '15D', 9.50, 'prima'),
+( 'Boeing', '737 MAX', '16A', null, 'business'), ( 'Boeing', '737 MAX', '16B', null, 'business'), ( 'Boeing', '737 MAX', '16C', null, 'business'), ( 'Boeing', '737 MAX', '16D', null, 'business'),
+( 'Boeing', '737 MAX', '17A', null, 'business'), ( 'Boeing', '737 MAX', '17B', null, 'business'), ( 'Boeing', '737 MAX', '17C', null, 'business'), ( 'Boeing', '737 MAX', '17D', null, 'business'),
+( 'Boeing', '737 MAX', '18A', null, 'business'), ( 'Boeing', '737 MAX', '18B', null, 'business'), ( 'Boeing', '737 MAX', '18C', null, 'business'), ( 'Boeing', '737 MAX', '18D', null, 'business'),
+( 'Boeing', '737 MAX', '19A', 25.00, 'business'), ( 'Boeing', '737 MAX', '19B', 25.00, 'business'), ( 'Boeing', '737 MAX', '19C', 25.00, 'business'), ( 'Boeing', '737 MAX', '19D', 25.00, 'business'),
+( 'Boeing', '737 MAX', '20A', 50.00, 'business'), ( 'Boeing', '737 MAX', '20B', 50.00, 'business'), ( 'Boeing', '737 MAX', '20C', 50.00, 'business'), ( 'Boeing', '737 MAX', '20D', 50.00, 'business'),
+
+-- 'Boeing', '767', 'b
+-- 'Boeing', '777', 'a
+-- 'Airbus', 'A320', '
+-- 'Airbus', 'A330', '
+-- 'Airbus', 'A380', '
