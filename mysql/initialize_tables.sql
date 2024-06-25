@@ -515,4 +515,4 @@ insert into PASSEGGERO values
 ( 'Leonardo', 'Ferri', 'FRRLRD32M09C573H', 'Leonardo.Ferri@outlook.com', 'acjfhysr'),
 ( 'Diana', 'Caruso', 'CRSDNI99D52C573L', 'Diana.Caruso@outlook.com', 'ybgwmkko'),
 ( 'Giorgia', 'Mancini', 'MNCGRG09L61C573B', 'Giorgia.Mancini@gmail.com', 'szwvpuqd'),
-( 'Elia', 'Pellegrini', 'PLLLEI37M23C573M', 'Elia.Pellegrini@outlook.com', 'puowltea'),
+( 'Elia', 'Pellegrini', 'PLLLEI37M23C573M', 'Elia.Pellegrini@outlook.com', 'puowltea');
