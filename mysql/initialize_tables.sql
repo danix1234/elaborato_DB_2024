@@ -97,4 +97,4 @@ insert into AEROPORTO values
 ('EDDB','BER','Germania','Berlino'),
 ('EDDK','CGN','Germania','Cologne'),
 ('EDDF','FRA','Germania','Francoforte'),
-('LOWW','VIE','Austria','Vienna'),
+('LOWW','VIE','Austria','Vienna');
