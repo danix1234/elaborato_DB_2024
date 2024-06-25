@@ -12,7 +12,8 @@
 -- Database Section
 -- ________________ 
 -- drop database compagnia_aerea;
-create database compagnia_aerea;
+drop database if exists compagnia_aerea;
+create database if not exists compagnia_aerea;
 use compagnia_aerea;
 
 
@@ -104,7 +105,7 @@ create table SEDILE (
      constraint IDSEDILE primary key (codice));
 
 create table VOLO (
-     codiceVolo int not null,
+     codiceVolo int not null auto_increment,
      dataPartenza date not null,
      oraPartenza time not null,
      partenza char(4) not null,
