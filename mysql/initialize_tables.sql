@@ -98,3 +98,17 @@ insert into AEROPORTO values
 ('EDDK','CGN','Germania','Cologne'),
 ('EDDF','FRA','Germania','Francoforte'),
 ('LOWW','VIE','Austria','Vienna');
+
+insert into AEROPLANO values
+('Boeing','737 MAX', '1', true), ('Boeing','737 MAX', '2', true), ('Boeing','737 MAX', '3', false), ('Boeing','737 MAX', '4', false), ('Boeing','737 MAX', '5', true),
+('Boeing','737 MAX', '6', true), ('Boeing','737 MAX', '7', true), ('Boeing','737 MAX', '8', false), ('Boeing','737 MAX', '9', false), ('Boeing','737 MAX', '10', true),
+('Boeing', '767', '1', true), ('Boeing', '767', '2', true), ('Boeing', '767', '3', false), ('Boeing', '767', '4', false), ('Boeing', '767', '5', false),
+('Boeing', '767', '6', true), ('Boeing', '767', '7', true), ('Boeing', '767', '8', false), ('Boeing', '767', '9', false), ('Boeing', '767', '10', false),
+('Boeing', '777', '1', false), ('Boeing', '777', '2', false), ('Boeing', '777', '3', false), ('Boeing', '777', '4', false), ('Boeing', '777', '5', false),
+('Boeing', '777', '6', false), ('Boeing', '777', '7', false), ('Boeing', '777', '8', false), ('Boeing', '777', '9', false), ('Boeing', '777', '10', false),
+('Airbus', 'A320', '1', true), ('Airbus', 'A320', '2', true), ('Airbus', 'A320', '3', true), ('Airbus', 'A320', '4', true), ('Airbus', 'A320', '5', false),
+('Airbus', 'A320', '6', true), ('Airbus', 'A320', '7', true), ('Airbus', 'A320', '8', true), ('Airbus', 'A320', '9', true), ('Airbus', 'A320', '10', false),
+('Airbus', 'A330', '1', true), ('Airbus', 'A330', '2', true), ('Airbus', 'A330', '3', false), ('Airbus', 'A330', '4', true), ('Airbus', 'A330', '5', true),
+('Airbus', 'A330', '6', true), ('Airbus', 'A330', '7', true), ('Airbus', 'A330', '8', false), ('Airbus', 'A330', '9', true), ('Airbus', 'A330', '10', true),
+('Airbus', 'A380', '1', true), ('Airbus', 'A380', '2', false), ('Airbus', 'A380', '3', true), ('Airbus', 'A380', '4', true), ('Airbus', 'A380', '5', true),
+('Airbus', 'A380', '6', true), ('Airbus', 'A380', '7', false), ('Airbus', 'A380', '8', true), ('Airbus', 'A380', '9', true), ('Airbus', 'A380', '10', true);
