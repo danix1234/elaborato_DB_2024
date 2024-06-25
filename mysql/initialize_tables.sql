@@ -36,3 +36,21 @@ insert into SEDILE values
 ('33A'),('33B'),('33C'),('33D'),('33E'),('33F'),
 ('34A'),('34B'),('34C'),('34D'),('34E'),('34F'),
 ('35A'),('35B'),('35C'),('35D'),('35E'),('35F');
+
+insert into RUOLO values 
+('Hostess', 'assistente di bordo, donna'),
+('Steward', 'assistente di bordo, uomo'),
+('Comandante', 'pilota di grado più elevato'),
+('Primo ufficiale', 'pilota che assiste il comandante');
+
+insert into PRODUTTORE values
+('Boeing', 'industria aeronautica statunitense produttrice di velivoli sia per utilizzo civile, che militare.'),
+('Airbus', 'azienda con sede nei Paesi Bassi, che opera nel settore aerospaziale e della difesa');
+
+insert into MODELLO values
+('Boeing', '737 MAX', 'modello di aeroplano a fusoliera stretta'),
+('Boeing', '767', 'bimotore a getto di linea, con configurazione a fusoliera larga ed ala bassa'),
+('Boeing', '777', 'aereo di linea a fusoliera larga a lungo raggio'),
+('Airbus', 'A320', 'aerei a fusoliera stretta per il corto-medio raggio'),
+('Airbus', 'A330', 'aereo di linea bimotore turboventola'),
+('Airbus', 'A380', 'aereo di linea quadrimotore a doppio ponte');

@@ -23,7 +23,7 @@ use compagnia_aerea;
 create table AEROPLANO (
      produttore varchar(100) not null,
      modello varchar(100) not null,
-     codiceSeriale varchar(100) not null,
+     codiceSeriale int not null auto_increment,
      noleggio bool not null,
      constraint IDAEROPLANO primary key (produttore, modello, codiceSeriale));
 
@@ -114,7 +114,7 @@ create table VOLO (
      oraArrivo time not null,
      produttore varchar(100) not null,
      modello varchar(100) not null,
-     codiceAeroplano varchar(100) not null,
+     codiceAeroplano int not null,
      constraint IDVOLO primary key (codiceVolo),
      constraint IDVOLO_1 unique (destinazione, partenza, dataPartenza, oraPartenza));
 
