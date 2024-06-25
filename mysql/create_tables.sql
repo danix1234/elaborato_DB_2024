@@ -64,7 +64,8 @@ create table PASSEGGERO (
      codiceFiscale varchar(100) not null,
      email varchar(100) not null,
      password varchar(100) not null,
-     constraint IDPASSEGGERO primary key (codiceFiscale));
+     constraint IDPASSEGGERO primary key (codiceFiscale),
+     constraint IDPASSEGGERO_1 unique (email));
 
 create table PERSONALE (
      nome varchar(100) not null,
