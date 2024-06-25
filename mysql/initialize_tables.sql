@@ -54,3 +54,47 @@ insert into MODELLO values
 ('Airbus', 'A320', 'aerei a fusoliera stretta per il corto-medio raggio'),
 ('Airbus', 'A330', 'aereo di linea bimotore turboventola'),
 ('Airbus', 'A380', 'aereo di linea quadrimotore a doppio ponte');
+
+insert into CLASSE values
+('economica','una sola borsa a mano, servizio escluso, sedili con poco spazio per le gambe'),
+('prima','imbarco prioritario, servizio incluso'),
+('business','servizio incluso, poltrone spaziose');
+
+insert into RAGGRUPPAMENTO values
+('Boeing', '737 MAX', 'economica', 20.0),
+('Boeing', '737 MAX', 'prima', 45.5),
+('Boeing', '737 MAX', 'business', 100.0),
+('Boeing', '767', 'economica', 25.0),
+('Boeing', '767', 'prima', 50.5),
+('Boeing', '767', 'business', 110.0),
+('Boeing', '777', 'economica', 30.0),
+('Boeing', '777', 'prima', 60.0),
+('Boeing', '777', 'business', 115.0),
+('Airbus', 'A320', 'economica', 15.0),
+('Airbus', 'A320', 'prima', 40.0),
+('Airbus', 'A320', 'business', 80.0),
+('Airbus', 'A330', 'economica', 25.0),
+('Airbus', 'A330', 'prima', 50),
+('Airbus', 'A330', 'business', 105.0),
+('Airbus', 'A380', 'economica', 40.0),
+('Airbus', 'A380', 'prima', 65.0),
+('Airbus', 'A380', 'business', 150.0);
+
+insert into AEROPORTO values
+('LIMC','MXP','Italia','Milano'),
+('LIMF','TRN','Italia','Torino'),
+('LIRF','FCO','Italia','Roma'),
+('LIMJ','GOA','Italia','Genova'),
+('LIPK','FRL','Italia','Forli'),
+('LIRN','NAP','Italia','Napoli'),
+('LICJ','PMO','Italia','Palermo'),
+('LEMD','MAD','Spagna','Madrid'),
+('LEBL','BCN','Spagna','Barcellona'),
+('LFPG','CDG','Francia','Parigi'),
+('LFBD','BOD','Francia','Bordeaux'),
+('EGLL','LHR','Inghilterra','Londra'),
+('EGBB','BHX','Inghilterra','Birmingham'),
+('EDDB','BER','Germania','Berlino'),
+('EDDK','CGN','Germania','Cologne'),
+('EDDF','FRA','Germania','Francoforte'),
+('LOWW','VIE','Austria','Vienna'),
