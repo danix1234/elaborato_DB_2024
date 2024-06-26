@@ -136,12 +136,14 @@ alter table BIGLIETTO add constraint FKPRENOTAZIONE
      references PASSEGGERO (codiceFiscale);
 
 alter table BIGLIETTO add constraint FKRIFERIMENTO
-     foreign key (codiceVolo)
-     references VOLO (codiceVolo);
+     foreign key (codiceVolo) 
+     references VOLO (codiceVolo)
+     on delete cascade;
 
 alter table LAVORATORE add constraint FKLAV_VOL
      foreign key (codiceVolo)
-     references VOLO (codiceVolo);
+     references VOLO (codiceVolo)
+     on delete cascade;
 
 alter table LAVORATORE add constraint FKLAV_PER
      foreign key (personaleCF)
