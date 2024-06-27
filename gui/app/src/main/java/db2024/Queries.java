@@ -177,4 +177,20 @@ public class Queries {
     public static ResultSet visualizzaListaBiglietti(String passeggeroCF) {
         return DBConnection.executeQuery(VISUALIZZA_LISTA_BIGLIETTI, passeggeroCF);
     }
+
+    public static final String OTTIENI_CODICE_FISCALE_DA_EMAIL = """
+            SELECT codiceFiscale
+            FROM PASSEGGERO
+            WHERE email = ?
+            """;
+
+    public static String ottieniCodiceFiscaleDaEmail(String email) {
+        var res = DBConnection.executeQuery(OTTIENI_CODICE_FISCALE_DA_EMAIL, email);
+        try {
+            res.next();
+            return res.getString(1);
+        } catch (Exception e) {
+            throw new IllegalStateException("could not obtain codice fiscale from email");
+        }
+    }
 }
