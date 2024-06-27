@@ -22,9 +22,8 @@ public class TopLevel {
         this(title, (int) Math.round(SIZE.getWidth() / 2), (int) Math.round(SIZE.getHeight() / 2));
     }
     
-    public TopLevel show(){
+    public void show(){
         this.frame.setVisible(true);
-        return this;
     }
     
     public void close(){
