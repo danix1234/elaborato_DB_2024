@@ -233,7 +233,7 @@ public class AdminTopLevel extends TopLevel {
         west.setPreferredSize(new Dimension(400, 500));
         center.setLayout(new GridLayout(12, 1, 0, 0));
         center.setPreferredSize(new Dimension(400, 500));
-        east.setLayout(new GridLayout(12, 1, 0, 0));
+        east.setLayout(new GridLayout(11, 1, 0, 0));
         east.setPreferredSize(new Dimension(400, 500));
         south.setLayout(new BorderLayout(0, 0));
         south.setPreferredSize(new Dimension(1220, 300));
