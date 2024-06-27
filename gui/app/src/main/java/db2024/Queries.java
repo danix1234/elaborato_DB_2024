@@ -164,7 +164,7 @@ public class Queries {
     }
 
     public static final String VISUALIZZA_LISTA_BIGLIETTI = """
-            SELECT P.nome, P.cognome, P.codiceFiscale, AP.codiceIATA, AP.stato, AP.città, AD.codiceIATA,
+            SELECT V.codiceVolo, P.nome, P.cognome, P.codiceFiscale, AP.codiceIATA, AP.stato, AP.città, AD.codiceIATA,
                 AD.stato, AD.città, V.destinazione, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo,
                 B.codiceSedile, PO.classe, B.costoTotale
             FROM PASSEGGERO P, BIGLIETTO B, VOLO V, AEROPORTO AP, AEROPORTO AD, POSTO PO

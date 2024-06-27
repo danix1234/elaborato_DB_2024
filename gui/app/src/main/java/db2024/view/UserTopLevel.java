@@ -1,13 +1,16 @@
 package db2024.view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+import db2024.DBUtils;
 import db2024.Queries;
 
 public class UserTopLevel extends TopLevel {
@@ -35,25 +38,61 @@ public class UserTopLevel extends TopLevel {
     public UserTopLevel() {
         super("Utente", 1220, 810);
         searchFlight.addActionListener(e -> {
-            dateFlight.setText("data");
-            fromFlight.setText("partenza (IATA)");
-            toFlight.setText("destinazione (IATA)");
-            // TODO: put results in south panel
-            // Queries.ricercaVolo(dateFlight.getText(), fromFlight.getText(),
-            // toFlight.getText());
+            ResultSet flights = null;
+            try {
+                flights = Queries.ricercaVolo(dateFlight.getText(), fromFlight.getText(), toFlight.getText());
+            } catch (Throwable t) {
+                resultStatus.setText("ricerca voli fallita");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            } finally {
+                dateFlight.setText("data");
+                fromFlight.setText("partenza (IATA)");
+                toFlight.setText("destinazione (IATA)");
+            }
+            resultStatus.setText("la ricerca dei voli è andata a buon fine");
+            results.setModel(DBUtils.createTable(flights));
+
         });
         listSeats.addActionListener(e -> {
-            codeFlight1.setText("codice volo");
-            // TODO: put results in south panel
+            ResultSet seats = null;
+            try {
+                seats = Queries.ricercaPostiDisponibili(Integer.parseInt(codeFlight1.getText()));
+            } catch (Throwable t) {
+                resultStatus.setText("ricerca sedili fallita");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            } finally {
+                codeFlight1.setText("codice volo");
+            }
+            resultStatus.setText("la ricerca dei sedili è andata a buon fine");
+            results.setModel(DBUtils.createTable(seats));
         });
         buyTicket.addActionListener(e -> {
-            codeFlight2.setText("codice volo");
-            codeSeat.setText("sedile");
-            // TODO: put results in south panel
+            try {
+                Queries.inserisciBiglietto(codeFlight2.getText(), codiceFiscale, codeSeat.getText());
+            } catch (Throwable t) {
+                resultStatus.setText("ci sono stati problemi nell'effettuare l'acquisto");
+                results.setModel(DBUtils.emptyTable());
+            } finally {
+                codeFlight2.setText("codice volo");
+                codeSeat.setText("sedile");
+            }
+            resultStatus.setText("il biglietto è stato acquistato");
+            results.setModel(DBUtils.emptyTable());
         });
         showTickets.addActionListener(e -> {
-            // TODO: show tickets in south panel
+            ResultSet tickets = null;
+            try {
+                tickets = Queries.visualizzaListaBiglietti(codiceFiscale);
+            } catch (Throwable t) {
+                resultStatus.setText("ci sono stati problemi nel trovare i tuoi biglietti");
+                results.setModel(DBUtils.emptyTable());
+            }
+            resultStatus.setText("ecco la lista dei tuoi biglietti");
+            results.setModel(DBUtils.createTable(tickets));
         });
+
         resultStatus.setEditable(false);
         resultStatus.setHorizontalAlignment(JTextField.CENTER);
         panel.setLayout(new BorderLayout(10, 10));
