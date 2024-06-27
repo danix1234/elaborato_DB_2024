@@ -89,6 +89,7 @@ public class DBConnection {
         try {
             return prepsmtm.executeQuery();
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new IllegalStateException("could not execute prepared query");
         }
     }

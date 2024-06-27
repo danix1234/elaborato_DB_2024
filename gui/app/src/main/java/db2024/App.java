@@ -20,14 +20,11 @@ public final class App {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        // var res = DBConnection.executeQuery("insert into SEDILE VALUES ('A01')");
-        // while (res.next()) {
-        //     for (int i = 1; i < 10; i++) {
-        //         System.out.print(res.getString(i));
-        //         System.out.print(" ");
-        //     }
-        //     System.out.println();
-        // }
+        var res_set = DBConnection.executeQuery(Queries.VISUALIZZA_PROFITTO_MEDIO, "LIMF", "LIPK", "LIPK", "LIMF","2024-01-01", "2024-01-02");
 
+        System.out.println(res_set.getMetaData().getColumnCount());
+        while(res_set.next()){
+            System.out.println(res_set.getObject(1));
+        }
     }
 }
