@@ -2,6 +2,7 @@ package db2024;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.lang.IllegalStateException;
 
 public class Queries {
@@ -178,19 +179,19 @@ public class Queries {
         return DBConnection.executeQuery(VISUALIZZA_LISTA_BIGLIETTI, passeggeroCF);
     }
 
-    public static final String OTTIENI_CODICE_FISCALE_DA_EMAIL = """
-            SELECT codiceFiscale
+    public static final String OTTIENI_DATI_UTENTE = """ 
+            SELECT nome, cognome, codiceFiscale
             FROM PASSEGGERO
             WHERE email = ?
             """;
 
-    public static String ottieniCodiceFiscaleDaEmail(String email) {
-        var res = DBConnection.executeQuery(OTTIENI_CODICE_FISCALE_DA_EMAIL, email);
+    public static List<String> ottieniDatiPersonaliDaEmail(String email) {
+        var res = DBConnection.executeQuery(OTTIENI_DATI_UTENTE, email);
         try {
             res.next();
-            return res.getString(1);
+            return List.of(res.getString(1),res.getString(2),res.getString(3));
         } catch (Exception e) {
-            throw new IllegalStateException("could not obtain codice fiscale from email");
+            throw new IllegalStateException("could not obtain user data from email");
         }
     }
 }

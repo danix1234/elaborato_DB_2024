@@ -15,6 +15,8 @@ import db2024.DBUtils;
 import db2024.Queries;
 
 public class UserTopLevel extends TopLevel {
+    private String name;
+    private String surname;
     private String codiceFiscale;
     private final JPanel panel = new JPanel();
     private final JPanel north = new JPanel();
@@ -22,6 +24,7 @@ public class UserTopLevel extends TopLevel {
     private final JPanel center = new JPanel();
     private final JPanel east = new JPanel();
     private final JPanel south = new JPanel();
+    private final JLabel hello = new JLabel("Benvenuto");
     private final JButton reset = new JButton("resetta");
     private final JTextField dateFlight = new JTextField("data");
     private final JTextField fromFlight = new JTextField("partenza (IATA)");
@@ -99,6 +102,7 @@ public class UserTopLevel extends TopLevel {
             resultStatus.setText("i risultati delle query verrano mostrati qua sotto");
             results.setModel(DBUtils.emptyTable());
         });
+        hello.setHorizontalAlignment(JTextField.CENTER);
         resultStatus.setHorizontalAlignment(JTextField.CENTER);
         dateFlight.setHorizontalAlignment(JTextField.CENTER);
         fromFlight.setHorizontalAlignment(JTextField.CENTER);
@@ -109,8 +113,8 @@ public class UserTopLevel extends TopLevel {
         codeSeat.setHorizontalAlignment(JTextField.CENTER);
         resultStatus.setText("i risultati delle query verrano mostrati qua sotto");
         panel.setLayout(new BorderLayout(10, 10));
-        north.setLayout(new GridLayout(1, 1, 0, 0));
-        north.setPreferredSize(new Dimension(400, 30));
+        north.setLayout(new GridLayout(2, 1, 0, 0));
+        north.setPreferredSize(new Dimension(400, 60));
         west.setLayout(new GridLayout(4, 1, 0, 0));
         west.setPreferredSize(new Dimension(400, 500));
         center.setLayout(new GridLayout(5, 1, 0, 0));
@@ -120,6 +124,7 @@ public class UserTopLevel extends TopLevel {
         south.setLayout(new BorderLayout(0, 0));
         south.setPreferredSize(new Dimension(1220, 300));
         north.add(reset);
+        north.add(hello);
         west.add(dateFlight);
         west.add(fromFlight);
         west.add(toFlight);
@@ -141,7 +146,11 @@ public class UserTopLevel extends TopLevel {
     }
 
     public void setCurrentUserEmail(String email) {
-        this.codiceFiscale = Queries.ottieniCodiceFiscaleDaEmail(email);
+        var tmp = Queries.ottieniDatiPersonaliDaEmail(email);
+        this.name = tmp.get(0);
+        this.surname = tmp.get(1);
+        this.codiceFiscale = tmp.get(2);
+        this.hello.setText("Benvenuto " + name + " " + surname);
     }
 
 }
