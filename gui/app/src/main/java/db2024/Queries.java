@@ -15,7 +15,7 @@ public class Queries {
     public static int inserisciVolo(String dataPartenza, String oraPartenza, String partenzaICAO,
             String destinazioneICAO, String dataArrivo, String oraArrivo, String produttore, String modello,
             int codiceAeroplano) {
-        return DBConnection.executeUpdate(INSERIMENTO_VOLO, null, dataPartenza, oraPartenza, partenzaICAO,
+        return DBConnection.executeUpdate(INSERIMENTO_VOLO, dataPartenza, oraPartenza, partenzaICAO,
                 destinazioneICAO, dataArrivo, oraArrivo, produttore, modello, codiceAeroplano);
     }
 
