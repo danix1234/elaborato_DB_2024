@@ -1,20 +1,17 @@
 package db2024;
 
-import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.swing.JFrame;
 
 public final class App {
 
     public static void main(String[] args) throws Throwable {
-        var frame = new JFrame();
-        var size = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize((int) Math.round(size.getWidth() / 2), (int) Math.round(size.getHeight() / 2));
-        frame.setLocationRelativeTo(null);
-        // frame.setVisible(true);
+        var loginFrame = new TopLevel("login", 400, 300);
+        var mainFrame = new TopLevel("Compagnia aerea");
+        loginFrame.show();
+        Thread.sleep(10000);
+        loginFrame.close();
+        mainFrame.show();
 
         System.out.println(Queries.controllaAccountEsiste("Gaia.Bianchi@outlook.com", "eczfdawf1"));
         debugResultSet(Queries.ricercaPostiDisponibili(2));

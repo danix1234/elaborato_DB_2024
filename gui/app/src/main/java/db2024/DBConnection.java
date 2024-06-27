@@ -40,7 +40,7 @@ public class DBConnection {
         try {
             res = DriverManager.getConnection("jdbc:mysql://localhost:3306/compagnia_aerea", username, password);
         } catch (Exception e) {
-            throw new IllegalStateException("couldn't initialize connection");
+            throw new IllegalStateException("couldn't initialize connection (check if username and password are correct)");
         }
         return res;
     }
