@@ -14,7 +14,6 @@ import db2024.DBUtils;
 import db2024.Queries;
 
 public class UserTopLevel extends TopLevel {
-    private String email;
     private String codiceFiscale;
     private final JPanel panel = new JPanel();
     private final JPanel west = new JPanel();
@@ -70,10 +69,13 @@ public class UserTopLevel extends TopLevel {
         });
         buyTicket.addActionListener(e -> {
             try {
-                Queries.inserisciBiglietto(codeFlight2.getText(), codiceFiscale, codeSeat.getText());
+                if (Queries.inserisciBiglietto(codeFlight2.getText(), codiceFiscale, codeSeat.getText()) != 1){
+                    throw new IllegalStateException("could not buy ticket");
+                }
             } catch (Throwable t) {
                 resultStatus.setText("ci sono stati problemi nell'effettuare l'acquisto");
                 results.setModel(DBUtils.emptyTable());
+                return;
             } finally {
                 codeFlight2.setText("codice volo");
                 codeSeat.setText("sedile");
@@ -88,6 +90,7 @@ public class UserTopLevel extends TopLevel {
             } catch (Throwable t) {
                 resultStatus.setText("ci sono stati problemi nel trovare i tuoi biglietti");
                 results.setModel(DBUtils.emptyTable());
+                return;
             }
             resultStatus.setText("ecco la lista dei tuoi biglietti");
             results.setModel(DBUtils.createTable(tickets));
@@ -124,7 +127,6 @@ public class UserTopLevel extends TopLevel {
     }
 
     public void setCurrentUserEmail(String email) {
-        this.email = email;
         this.codiceFiscale = Queries.ottieniCodiceFiscaleDaEmail(email);
     }
 
