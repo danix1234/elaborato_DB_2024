@@ -1,1 +1,7 @@
+# libreoffice lock files
 .~lock*#
+
+# gradle cache and build directories
+.gradle
+build
+bin
