@@ -18,7 +18,7 @@ public class LoginTopLevel extends TopLevel {
     private final JButton conferm = new JButton("Accedi");
 
     public LoginTopLevel() {
-        super("login", 400, 300);
+        super("Accesso", 400, 300);
         reset.setHorizontalAlignment(JLabel.CENTER);
         info.setHorizontalAlignment(JLabel.CENTER);
         email.setHorizontalAlignment(JLabel.CENTER);

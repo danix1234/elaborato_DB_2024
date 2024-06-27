@@ -21,7 +21,7 @@ public class SignInTopLevel extends TopLevel {
     private final JButton conferm = new JButton("Registrati e Accedi");
 
     public SignInTopLevel() {
-        super("Choise", 400, 300);
+        super("Registrazione", 400, 300);
         reset.setHorizontalAlignment(JLabel.CENTER);
         info.setHorizontalAlignment(JLabel.CENTER);
         nome.setHorizontalAlignment(JLabel.CENTER);

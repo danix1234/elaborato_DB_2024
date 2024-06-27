@@ -11,7 +11,7 @@ public class ChoiseTopLevel extends TopLevel {
     private final JButton signInButton = new JButton("Registrati");
 
     public ChoiseTopLevel() {
-        super("Choise", 400, 300);
+        super("Scelta", 400, 300);
         loginButton.addActionListener(e -> {
             close();
             TopLevelManager.LOGIN.show();
