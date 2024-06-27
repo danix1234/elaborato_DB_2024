@@ -1,6 +1,8 @@
 package db2024;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.lang.IllegalStateException;
 
 public class Queries {
     public static final String INSERIMENTO_VOLO = """
@@ -95,11 +97,32 @@ public class Queries {
             INSERT INTO PASSEGGERO (nome, cognome, codiceFiscale, email, password)
             VALUES (?, ?, ?, ?, ?)
                 """;
+
+    public static int inserisciPasseggero(String nome, String cognome, String codiceFiscale, String email,
+            String password) {
+        return DBConnection.executeUpdate(INSERIMENTO_PASSEGGERO, nome, cognome, codiceFiscale, email, password);
+    }
+
     public static final String CONTROLLA_ACCOUNT_ESISTE = """
             SELECT count(*)
             FROM PASSEGGERO
-            WHERE email = 'Gaia.Bianchi@outlook.com' and `password` = 'eczfdawa';
+            WHERE email = ? and `password` = ?;
             """;
+
+    public static boolean controllaAccountEsiste(String email, String password) {
+        var res = DBConnection.executeQuery(CONTROLLA_ACCOUNT_ESISTE, email,password);
+        try {
+            res.next();
+            int found = res.getInt(1);
+            if (found > 1){
+                throw new IllegalStateException("BUG: multipli account con stessa email e password");
+            }
+            return found == 1;
+        } catch (SQLException e) {
+            throw new IllegalStateException("could not check if account exists");
+        }
+    }
+
     public static final String RICERCA_VOLO = """
             SELECT V.codiceVolo, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo, P.codiceIATA,
                 P.stato, P.città, D.codiceIATA, D.stato, D.città, V.produttore, V.modello
