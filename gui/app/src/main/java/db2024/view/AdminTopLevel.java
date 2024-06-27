@@ -3,6 +3,7 @@ package db2024.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -133,8 +134,28 @@ public class AdminTopLevel extends TopLevel {
             results.setModel(DBUtils.emptyTable());
         });
         east8.addActionListener(e -> {
+            ResultSet profitti = null;
+            try {
+                profitti = Queries.visualizzaProfittoMedio(east4.getText(), east5.getText(), east6.getText(), east7.getText());
+            } catch (Throwable t) {
+                resultStatus.setText("non è stato possibile calcolare il profitto medio");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            }
+            resultStatus.setText("il calcolo del profitto medio è andato a buon fine");
+            DBUtils.updateTable(results, profitti);
         });
         east11.addActionListener(e -> {
+            ResultSet tratte = null;
+            try {
+                tratte = Queries.visualizzaTratteTrafficate(east10.getText(), east11.getText());
+            } catch (Throwable t) {
+                resultStatus.setText("non è stato possibile calcolare le tratte più trafficate");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            }
+            resultStatus.setText("il calcolo delle tratte più trafficate è andato a buon fine");
+            DBUtils.updateTable(results, tratte);
         });
         reset.addActionListener(e -> {
             west1.setText("data partenza");
