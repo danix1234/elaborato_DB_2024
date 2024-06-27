@@ -17,6 +17,7 @@ public final class App {
         var size = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((int) Math.round(size.getWidth() / 2), (int) Math.round(size.getHeight() / 2));
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         // var res = DBConnection.executeQuery("insert into SEDILE VALUES ('A01')");
@@ -28,6 +29,5 @@ public final class App {
         //     System.out.println();
         // }
 
-        DBConnection.emptyStmt().executeUpdate("insert into SEDILE values ('A01')");
     }
 }

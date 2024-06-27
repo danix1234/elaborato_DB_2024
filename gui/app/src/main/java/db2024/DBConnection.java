@@ -25,14 +25,21 @@ public class DBConnection {
     private static final Connection initConnection() {
         List<String> lines;
         Connection res;
+        String username = "";
+        String password = "";
         try {
             lines = Files.readAllLines(Paths.get(System.getProperty("user.home") + "/.compagnia_aerea"));
         } catch (IOException e) {
             throw new IllegalStateException("file '.compagnia_aerea' wasn't found in the home directory");
         }
+        if (lines.size() > 0){
+            username = lines.get(0);
+        }
+        if (lines.size() > 1){
+            password = lines.get(1);
+        }
         try {
-            res = DriverManager.getConnection("jdbc:mysql://localhost:3306/compagnia_aerea", lines.get(0),
-                    lines.get(1));
+            res = DriverManager.getConnection("jdbc:mysql://localhost:3306/compagnia_aerea", username, password);
         } catch (Exception e) {
             throw new IllegalStateException("couldn't initialize connection");
         }
