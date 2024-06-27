@@ -19,13 +19,15 @@ public final class App {
         frame.setSize((int) Math.round(size.getWidth() / 2), (int) Math.round(size.getHeight() / 2));
         frame.setVisible(true);
 
-        var res = DBConnection.executeQuery("select * from VOLO");
-        while (res.next()) {
-            for (int i = 1; i < 10; i++) {
-                System.out.print(res.getString(i));
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
+        // var res = DBConnection.executeQuery("insert into SEDILE VALUES ('A01')");
+        // while (res.next()) {
+        //     for (int i = 1; i < 10; i++) {
+        //         System.out.print(res.getString(i));
+        //         System.out.print(" ");
+        //     }
+        //     System.out.println();
+        // }
+
+        DBConnection.emptyStmt().executeUpdate("insert into SEDILE values ('A01')");
     }
 }

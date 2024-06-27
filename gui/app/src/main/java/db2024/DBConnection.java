@@ -85,4 +85,22 @@ public class DBConnection {
             throw new IllegalStateException("could not execute prepared query");
         }
     }
+
+    public static int executeUpdate(String query){
+        var stmt = emptyStmt();
+        try {
+            return stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new IllegalStateException("could not execute query");
+        }
+    }
+    
+    public static int executeUpdate(String query, Object...values){
+        var prepsmtm = prepareStmt(query, values);
+        try {
+            return prepsmtm.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("could not execute prepared query");
+        }
+    }
 }
