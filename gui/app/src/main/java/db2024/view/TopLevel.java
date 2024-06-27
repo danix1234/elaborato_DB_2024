@@ -1,4 +1,4 @@
-package db2024;
+package db2024.view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 // which is ironic, since java swing uses xwayland 
 public class TopLevel {
     private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-    private JFrame frame = new JFrame();
+    protected JFrame frame = new JFrame();
     
     public TopLevel(String title, int width, int height){
         frame.setTitle(title);
