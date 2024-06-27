@@ -111,7 +111,6 @@ public class UserTopLevel extends TopLevel {
         codeFlight1.setHorizontalAlignment(JTextField.CENTER);
         codeFlight2.setHorizontalAlignment(JTextField.CENTER);
         codeSeat.setHorizontalAlignment(JTextField.CENTER);
-        resultStatus.setText("i risultati delle query verrano mostrati qua sotto");
         panel.setLayout(new BorderLayout(10, 10));
         north.setLayout(new GridLayout(2, 1, 0, 0));
         north.setPreferredSize(new Dimension(400, 60));
