@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import db2024.DBUtils;
+
 public class AdminTopLevel extends TopLevel {
     private final JPanel panel = new JPanel();
     private final JPanel north = new JPanel();
@@ -60,7 +62,38 @@ public class AdminTopLevel extends TopLevel {
 
     public AdminTopLevel() {
         super("Amministratore", 1220, 810);
-
+        reset.addActionListener(e -> {
+            west1.setText("data partenza");
+            west2.setText("ora partenza");
+            west3.setText("partenza (ICAO)");
+            west4.setText("destinazione (ICAO)");
+            west5.setText("data arrivo");
+            west6.setText("ora arrivo");
+            west7.setText("produttore aeroplano");
+            west8.setText("modello aeroplano");
+            west9.setText("codice seriale aeroplano");
+            west11.setText("codice volo");
+            center1.setText("nome");
+            center2.setText("cognome");
+            center3.setText("codice fiscale");
+            center4.setText("data nascita");
+            center5.setText("data assunziones");
+            center6.setText("ruolo");
+            center8.setText("produttore");
+            center9.setText("modello");
+            center10.setText("codice seriale");
+            center11.setText("noleggio");
+            east1.setText("codice fiscale personale");
+            east2.setText("codice volo");
+            east4.setText("partenza (ICAO)");
+            east5.setText("destinazione (ICAO)");
+            east6.setText("data di inizio");
+            east7.setText("data di fine");
+            east9.setText("data di inizio");
+            east10.setText("data di fine");
+            resultStatus.setText("i risultati delle query verrano mostrati qua sotto");
+            results.setModel(DBUtils.emptyTable());
+        });
         reset.setHorizontalAlignment(JTextField.CENTER);
         west1.setHorizontalAlignment(JTextField.CENTER);
         west2.setHorizontalAlignment(JTextField.CENTER);
