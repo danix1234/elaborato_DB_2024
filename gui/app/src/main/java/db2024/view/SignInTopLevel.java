@@ -40,6 +40,7 @@ public class SignInTopLevel extends TopLevel {
         conferm.addActionListener(e -> {
             if (!email.getText().contains("@")) {
                 info.setText("l'email non è valida");
+                return;
             }
             int lineChanged = 0;
             try {
