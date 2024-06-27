@@ -12,10 +12,13 @@ import javax.swing.JFrame;
 
 public final class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         var frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setVisible(true);
+        var conn = DBConnection.getConnection();
+        var statment = conn.createStatement();
+        statment.execute("select * from VOLO");
     }
 }

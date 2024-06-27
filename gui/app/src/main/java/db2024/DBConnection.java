@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class DBConnection {
@@ -26,10 +28,31 @@ public class DBConnection {
             throw new IllegalStateException("file '.compagnia_aerea' wasn't found in the home directory");
         }
         try {
-            res = DriverManager.getConnection("jdbc:mysql://localhost:3306/compagnia_aerea", lines.get(0), lines.get(1));
+            res = DriverManager.getConnection("jdbc:mysql://localhost:3306/compagnia_aerea", lines.get(0),
+                    lines.get(1));
         } catch (Exception e) {
             throw new IllegalStateException("couldn't initialize connection");
         }
         return res;
+    }
+
+    public static PreparedStatement prepare(String query, Object... values) {
+        PreparedStatement statement = null;
+        try {
+            statement = SINGLETON.prepareStatement(query);
+            for (int i = 0; i < values.length; i++) {
+                statement.setObject(i + 1, values[i]);
+            }
+            return statement;
+        } catch (Exception e) {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e1) {
+                    throw new IllegalStateException("could not close statement");
+                }
+            }
+        }
+        return statement;
     }
 }
