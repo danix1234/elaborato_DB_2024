@@ -7,3 +7,4 @@ Per eseguire l'applicazione:
 - creare un file nella home directory, denominato '.compagnia_aerea', e inserire: 
     - nella prima riga l'username per mysql-workbench
     - nella seconda riga la password per mysql-workbench
+- eseguire l'applicazione con './gradlew run' (unix) o '.\gradlew.bat run' (windows)
