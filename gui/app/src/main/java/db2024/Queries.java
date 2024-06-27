@@ -173,7 +173,8 @@ public class Queries {
                 and PO.produttore = V.produttore and PO.modello = V.modello
                 and PO.codiceSedile = B.codiceSedile and P.codiceFiscale = ?;
             """;
-            public static ResultSet visualizzaListaBiglietti(String passeggeroCF){
-                return DBConnection.executeQuery(VISUALIZZA_LISTA_BIGLIETTI, passeggeroCF);
-            }
+
+    public static ResultSet visualizzaListaBiglietti(String passeggeroCF) {
+        return DBConnection.executeQuery(VISUALIZZA_LISTA_BIGLIETTI, passeggeroCF);
+    }
 }
