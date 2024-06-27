@@ -7,8 +7,10 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class DBConnection {
     private static final Connection SINGLETON = initConnection();
@@ -64,5 +66,23 @@ public class DBConnection {
             }
         }
         return statement;
+    }
+    
+    public static ResultSet executeQuery(String query){
+        var stmt = emptyStmt();
+        try {
+            return stmt.executeQuery(query);
+        } catch (SQLException e) {
+            throw new IllegalStateException("could not execute query");
+        }
+    }
+    
+    public static ResultSet executeQuery(String query, Object...values){
+        var prepsmtm = prepareStmt(query, values);
+        try {
+            return prepsmtm.executeQuery();
+        } catch (SQLException e) {
+            throw new IllegalStateException("could not execute prepared query");
+        }
     }
 }

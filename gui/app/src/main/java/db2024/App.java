@@ -14,10 +14,18 @@ public final class App {
 
     public static void main(String[] args) throws Throwable {
         var frame = new JFrame();
+        var size = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        frame.setSize((int) Math.round(size.getWidth() / 2), (int) Math.round(size.getHeight() / 2));
         frame.setVisible(true);
-        
-        DBConnection.prepareStmt("select * from VOLO").executeQuery();
+
+        var res = DBConnection.executeQuery("select * from VOLO");
+        while (res.next()) {
+            for (int i = 1; i < 10; i++) {
+                System.out.print(res.getString(i));
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
     }
 }
