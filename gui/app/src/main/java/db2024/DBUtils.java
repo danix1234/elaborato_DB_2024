@@ -38,7 +38,7 @@ public class DBUtils {
         final var headers = extractHeaders(resultSet);
         final var values = extractElems(resultSet);
         final var rows = values.size();
-        if (rows == 0){
+        if (rows == 0) {
             table.setModel(DBUtils.emptyTable());
             return;
         }

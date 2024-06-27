@@ -143,12 +143,12 @@ public class AdminTopLevel extends TopLevel {
                 return;
             }
             resultStatus.setText("il calcolo del profitto medio è andato a buon fine");
-            DBUtils.updateTable(results, profitti);
+            results.setModel(DBUtils.createTable(profitti));
         });
         east11.addActionListener(e -> {
             ResultSet tratte = null;
             try {
-                tratte = Queries.visualizzaTratteTrafficate(east10.getText(), east11.getText());
+                tratte = Queries.visualizzaTratteTrafficate(east9.getText(), east10.getText());
             } catch (Throwable t) {
                 resultStatus.setText("non è stato possibile calcolare le tratte più trafficate");
                 results.setModel(DBUtils.emptyTable());
