@@ -50,8 +50,7 @@ public class UserTopLevel extends TopLevel {
                 toFlight.setText("destinazione (IATA)");
             }
             resultStatus.setText("la ricerca dei voli è andata a buon fine");
-            results.setModel(DBUtils.createTable(flights));
-
+            DBUtils.updateTable(results, flights);
         });
         listSeats.addActionListener(e -> {
             ResultSet seats = null;
@@ -65,7 +64,7 @@ public class UserTopLevel extends TopLevel {
                 codeFlight1.setText("codice volo");
             }
             resultStatus.setText("la ricerca dei sedili è andata a buon fine");
-            results.setModel(DBUtils.createTable(seats));
+            DBUtils.updateTable(results, seats);
         });
         buyTicket.addActionListener(e -> {
             try {
@@ -93,7 +92,7 @@ public class UserTopLevel extends TopLevel {
                 return;
             }
             resultStatus.setText("ecco la lista dei tuoi biglietti");
-            results.setModel(DBUtils.createTable(tickets));
+            DBUtils.updateTable(results, tickets);
         });
 
         resultStatus.setEditable(false);
