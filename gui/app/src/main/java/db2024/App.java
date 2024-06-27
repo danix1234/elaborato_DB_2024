@@ -17,8 +17,7 @@ public final class App {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setVisible(true);
-        var conn = DBConnection.getConnection();
-        var statment = conn.createStatement();
-        statment.execute("select * from VOLO");
+        
+        DBConnection.prepareStmt("select * from VOLO").executeQuery();
     }
 }

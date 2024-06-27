@@ -1,5 +1,6 @@
 package db2024;
 
+import java.sql.Statement;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -35,8 +36,16 @@ public class DBConnection {
         }
         return res;
     }
+    
+    public static Statement emptyStmt(){
+        try {
+            return SINGLETON.createStatement();
+        } catch (SQLException e) {
+            throw new IllegalStateException("could not create empty statement");
+        }
+    }
 
-    public static PreparedStatement prepare(String query, Object... values) {
+    public static PreparedStatement prepareStmt(String query, Object... values) {
         PreparedStatement statement = null;
         try {
             statement = SINGLETON.prepareStatement(query);
@@ -51,6 +60,7 @@ public class DBConnection {
                 } catch (SQLException e1) {
                     throw new IllegalStateException("could not close statement");
                 }
+                throw new IllegalStateException("could not prepare statement");
             }
         }
         return statement;
