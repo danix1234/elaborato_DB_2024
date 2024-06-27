@@ -12,10 +12,10 @@ public class Queries {
             VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                             """;
 
-    public static int inserisciVolo(int codiceVolo, String dataPartenza, String oraPartenza, String partenzaICAO,
+    public static int inserisciVolo(String dataPartenza, String oraPartenza, String partenzaICAO,
             String destinazioneICAO, String dataArrivo, String oraArrivo, String produttore, String modello,
             int codiceAeroplano) {
-        return DBConnection.executeUpdate(INSERIMENTO_VOLO, codiceVolo, dataPartenza, oraPartenza, partenzaICAO,
+        return DBConnection.executeUpdate(INSERIMENTO_VOLO, null, dataPartenza, oraPartenza, partenzaICAO,
                 destinazioneICAO, dataArrivo, oraArrivo, produttore, modello, codiceAeroplano);
     }
 

@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import db2024.DBUtils;
+import db2024.Queries;
 
 public class AdminTopLevel extends TopLevel {
     private final JPanel panel = new JPanel();
@@ -62,6 +63,79 @@ public class AdminTopLevel extends TopLevel {
 
     public AdminTopLevel() {
         super("Amministratore", 1220, 810);
+        west10.addActionListener(e -> {
+            try {
+                if (Queries.inserisciVolo(west1.getText(), west2.getText(), west3.getText(), west4.getText(),
+                        west5.getText(), west6.getText(), west7.getText(), west8.getText(),
+                        Integer.parseInt(west9.getText())) != 1) {
+                    throw new IllegalStateException("could not add flight");
+                }
+            } catch (Throwable t) {
+                resultStatus.setText("ci sono stati problemi nell'inserire il volo");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            }
+            resultStatus.setText("il volo è stato aggiunto");
+            results.setModel(DBUtils.emptyTable());
+        });
+        west12.addActionListener(e -> {
+            try {
+                if (Queries.cancellaVolo(Integer.parseInt(west11.getText())) != 1) {
+                    throw new IllegalStateException("could not delete flight");
+                }
+            } catch (Throwable t) {
+                resultStatus.setText("ci sono stati problemi nel cancellare il volo");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            }
+            resultStatus.setText("il volo è stato cancellato");
+            results.setModel(DBUtils.emptyTable());
+        });
+        center7.addActionListener(e -> {
+            try {
+                if (Queries.inserisciPersonale(center1.getText(), center2.getText(), center3.getText(),
+                        center4.getText(), center5.getText(), center6.getText()) != 1) {
+                    throw new IllegalStateException("could not add workers");
+                }
+            } catch (Throwable t) {
+                resultStatus.setText("ci sono stati problemi nell'inserire il personale");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            }
+            resultStatus.setText("il personale è stato inserito");
+            results.setModel(DBUtils.emptyTable());
+        });
+        center12.addActionListener(e -> {
+            try {
+                if (Queries.inserisciAeroplano(center8.getText(), center9.getText(),
+                        Integer.parseInt(center10.getText()), Boolean.parseBoolean(center11.getText())) != 1) {
+                    throw new IllegalStateException("could not add airplanes");
+                }
+            } catch (Throwable t) {
+                resultStatus.setText("ci sono stati problemi nell'inserire l'aeroplano");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            }
+            resultStatus.setText("il personale è stato inserito");
+            results.setModel(DBUtils.emptyTable());
+        });
+        east3.addActionListener(e -> {
+            try {
+                if (Queries.inserisciLavoratore(east1.getText(), east2.getText()) != 1) {
+                    throw new IllegalStateException("could not assign worker to flight");
+                }
+            } catch (Throwable t) {
+                resultStatus.setText("ci sono stati problemi nell'assegnare il lavoratore al volo");
+                results.setModel(DBUtils.emptyTable());
+                return;
+            }
+            resultStatus.setText("il personale è stato assegnato al volo");
+            results.setModel(DBUtils.emptyTable());
+        });
+        east8.addActionListener(e -> {
+        });
+        east11.addActionListener(e -> {
+        });
         reset.addActionListener(e -> {
             west1.setText("data partenza");
             west2.setText("ora partenza");
@@ -130,6 +204,7 @@ public class AdminTopLevel extends TopLevel {
         east9.setHorizontalAlignment(JTextField.CENTER);
         east10.setHorizontalAlignment(JTextField.CENTER);
         east11.setHorizontalAlignment(JTextField.CENTER);
+        resultStatus.setHorizontalAlignment(JTextField.CENTER);
         panel.setLayout(new BorderLayout(10, 10));
         north.setLayout(new GridLayout(1, 1, 0, 0));
         north.setPreferredSize(new Dimension(400, 30));
