@@ -38,17 +38,17 @@ public class DBUtils {
         final var headers = extractHeaders(resultSet);
         final var values = extractElems(resultSet);
         final var rows = values.size();
+        if (rows == 0){
+            table.setModel(DBUtils.emptyTable());
+            return;
+        }
         final var cols = values.get(0).size();
         final var tmp = new DefaultTableModel();
         tmp.setColumnIdentifiers(new Vector<String>(headers));
         tmp.setColumnCount(cols);
         tmp.setRowCount(rows);
-        System.out.println(cols);
-        System.out.println(rows);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                System.out.println(i + " " + j);
-                System.out.println(values.get(i).get(j));
                 tmp.setValueAt(values.get(i).get(j), i, j);
             }
         }

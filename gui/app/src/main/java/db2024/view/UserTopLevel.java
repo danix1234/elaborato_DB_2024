@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.sql.ResultSet;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,10 +17,12 @@ import db2024.Queries;
 public class UserTopLevel extends TopLevel {
     private String codiceFiscale;
     private final JPanel panel = new JPanel();
+    private final JPanel north = new JPanel();
     private final JPanel west = new JPanel();
     private final JPanel center = new JPanel();
     private final JPanel east = new JPanel();
     private final JPanel south = new JPanel();
+    private final JButton reset = new JButton("resetta");
     private final JTextField dateFlight = new JTextField("data");
     private final JTextField fromFlight = new JTextField("partenza (IATA)");
     private final JTextField toFlight = new JTextField("destinazione (IATA)");
@@ -30,7 +33,7 @@ public class UserTopLevel extends TopLevel {
     private final JTextField codeSeat = new JTextField("sedile");
     private final JButton buyTicket = new JButton("compra biglietto");
     private final JButton showTickets = new JButton("mostra tutti i biglietti");
-    private final JTextField resultStatus = new JTextField("i risultati delle query verrano mostrati qua sotto");
+    private final JLabel resultStatus = new JLabel("i risultati delle query verrano mostrati qua sotto");
     private final JTable results = new JTable();
     private final JScrollPane scrollableResults = new JScrollPane(results);
 
@@ -44,10 +47,6 @@ public class UserTopLevel extends TopLevel {
                 resultStatus.setText("ricerca voli fallita");
                 results.setModel(DBUtils.emptyTable());
                 return;
-            } finally {
-                dateFlight.setText("data");
-                fromFlight.setText("partenza (IATA)");
-                toFlight.setText("destinazione (IATA)");
             }
             resultStatus.setText("la ricerca dei voli è andata a buon fine");
             DBUtils.updateTable(results, flights);
@@ -60,24 +59,19 @@ public class UserTopLevel extends TopLevel {
                 resultStatus.setText("ricerca sedili fallita");
                 results.setModel(DBUtils.emptyTable());
                 return;
-            } finally {
-                codeFlight1.setText("codice volo");
             }
             resultStatus.setText("la ricerca dei sedili è andata a buon fine");
             DBUtils.updateTable(results, seats);
         });
         buyTicket.addActionListener(e -> {
             try {
-                if (Queries.inserisciBiglietto(codeFlight2.getText(), codiceFiscale, codeSeat.getText()) != 1){
+                if (Queries.inserisciBiglietto(codeFlight2.getText(), codiceFiscale, codeSeat.getText()) != 1) {
                     throw new IllegalStateException("could not buy ticket");
                 }
             } catch (Throwable t) {
                 resultStatus.setText("ci sono stati problemi nell'effettuare l'acquisto");
                 results.setModel(DBUtils.emptyTable());
                 return;
-            } finally {
-                codeFlight2.setText("codice volo");
-                codeSeat.setText("sedile");
             }
             resultStatus.setText("il biglietto è stato acquistato");
             results.setModel(DBUtils.emptyTable());
@@ -94,10 +88,29 @@ public class UserTopLevel extends TopLevel {
             resultStatus.setText("ecco la lista dei tuoi biglietti");
             DBUtils.updateTable(results, tickets);
         });
-
-        resultStatus.setEditable(false);
+        reset.addActionListener(e -> {
+            dateFlight.setText("data");
+            fromFlight.setText("partenza (IATA)");
+            toFlight.setText("destinazione (IATA)");
+            searchFlight.setText("ricerca");
+            codeFlight1.setText("codice volo");
+            codeFlight2.setText("codice volo");
+            codeSeat.setText("sedile");
+            resultStatus.setText("i risultati delle query verrano mostrati qua sotto");
+            results.setModel(DBUtils.emptyTable());
+        });
         resultStatus.setHorizontalAlignment(JTextField.CENTER);
+        dateFlight.setHorizontalAlignment(JTextField.CENTER);
+        fromFlight.setHorizontalAlignment(JTextField.CENTER);
+        toFlight.setHorizontalAlignment(JTextField.CENTER);
+        searchFlight.setHorizontalAlignment(JTextField.CENTER);
+        codeFlight1.setHorizontalAlignment(JTextField.CENTER);
+        codeFlight2.setHorizontalAlignment(JTextField.CENTER);
+        codeSeat.setHorizontalAlignment(JTextField.CENTER);
+        resultStatus.setText("i risultati delle query verrano mostrati qua sotto");
         panel.setLayout(new BorderLayout(10, 10));
+        north.setLayout(new GridLayout(1, 1, 0, 0));
+        north.setPreferredSize(new Dimension(400, 30));
         west.setLayout(new GridLayout(4, 1, 0, 0));
         west.setPreferredSize(new Dimension(400, 500));
         center.setLayout(new GridLayout(5, 1, 0, 0));
@@ -106,6 +119,7 @@ public class UserTopLevel extends TopLevel {
         east.setPreferredSize(new Dimension(400, 500));
         south.setLayout(new BorderLayout(0, 0));
         south.setPreferredSize(new Dimension(1220, 300));
+        north.add(reset);
         west.add(dateFlight);
         west.add(fromFlight);
         west.add(toFlight);
@@ -118,6 +132,7 @@ public class UserTopLevel extends TopLevel {
         east.add(showTickets);
         south.add(resultStatus, BorderLayout.NORTH);
         south.add(scrollableResults, BorderLayout.CENTER);
+        panel.add(north, BorderLayout.NORTH);
         panel.add(west, BorderLayout.WEST);
         panel.add(center, BorderLayout.CENTER);
         panel.add(east, BorderLayout.EAST);

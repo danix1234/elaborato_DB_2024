@@ -3,6 +3,7 @@ package db2024.view;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -10,7 +11,7 @@ import db2024.Queries;
 
 public class SignInTopLevel extends TopLevel {
     JPanel panel = new JPanel();
-    private final JTextField info = new JTextField("inserisci dati personali");
+    private final JLabel info = new JLabel("inserisci dati personali");
     private final JTextField nome = new JTextField("nome");
     private final JTextField cognome = new JTextField("cognome");
     private final JTextField codiceFiscale = new JTextField("codice fiscale");
@@ -20,7 +21,7 @@ public class SignInTopLevel extends TopLevel {
 
     public SignInTopLevel() {
         super("Choise", 400, 300);
-        info.setEditable(false);
+        info.setHorizontalAlignment(JLabel.CENTER);
         conferm.addActionListener(e -> {
             if (!email.getText().contains("@")) {
                 info.setText("l'email non è valida");

@@ -3,6 +3,7 @@ package db2024.view;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -10,14 +11,14 @@ import db2024.Queries;
 
 public class LoginTopLevel extends TopLevel {
     private final JPanel panel = new JPanel();
-    private final JTextField info = new JTextField("inserisci email e password");
+    private final JLabel info = new JLabel("inserisci email e password");
     private final JTextField email = new JTextField("email");
     private final JTextField password = new JTextField("password");
     private final JButton conferm = new JButton("Accedi");
 
     public LoginTopLevel() {
         super("login", 400, 300);
-        info.setEditable(false);
+        info.setHorizontalAlignment(JLabel.CENTER);;
         conferm.addActionListener(e -> {
             if (email.getText().equals("admin") && password.getText().equals("admin")) {
                 close();
