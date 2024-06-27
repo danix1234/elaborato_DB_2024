@@ -17,6 +17,7 @@ public final class App {
         // frame.setVisible(true);
 
         System.out.println(Queries.controllaAccountEsiste("Gaia.Bianchi@outlook.com", "eczfdawf1"));
+        debugResultSet(Queries.ricercaPostiDisponibili(2));
     }
 
     public static void debugResultSet(ResultSet set) throws SQLException {

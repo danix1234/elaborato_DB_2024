@@ -110,11 +110,11 @@ public class Queries {
             """;
 
     public static boolean controllaAccountEsiste(String email, String password) {
-        var res = DBConnection.executeQuery(CONTROLLA_ACCOUNT_ESISTE, email,password);
+        var res = DBConnection.executeQuery(CONTROLLA_ACCOUNT_ESISTE, email, password);
         try {
             res.next();
             int found = res.getInt(1);
-            if (found > 1){
+            if (found > 1) {
                 throw new IllegalStateException("BUG: multipli account con stessa email e password");
             }
             return found == 1;
@@ -130,6 +130,11 @@ public class Queries {
             WHERE V.partenza = P.codiceICAO and V.destinazione = D.codiceICAO
                 and dataPartenza = ? and P.codiceIATA = ? and D.codiceIATA = ?
             """;
+
+    public static ResultSet ricercaVolo(String data, String partenzaIATA, String destinazioneIATA) {
+        return DBConnection.executeQuery(RICERCA_VOLO, data, partenzaIATA, destinazioneIATA);
+    }
+
     public static final String RICERCA_POSTI_DISPONIBILI = """
             SELECT codiceSedile
             FROM POSTO P, VOLO V
@@ -139,6 +144,11 @@ public class Queries {
             FROM BIGLIETTO
             WHERE codiceVolo = ?;
             """;
+
+    public static ResultSet ricercaPostiDisponibili(int codiceVolo) {
+        return DBConnection.executeQuery(RICERCA_POSTI_DISPONIBILI, codiceVolo, codiceVolo);
+    }
+
     public static final String INSERIMENTO_BIGLIETTO = """
             INSERT INTO BIGLIETTO (codiceVolo, passeggeroCF, codiceSedile, costoTotale)
             VALUES (? ,? ,? , (select coalesce(P.sovrapprezzo,0) + R.prezzoBase
@@ -147,6 +157,12 @@ public class Queries {
                 and V.produttore = P.produttore and V.modello = P.modello
                 and V.produttore = R.produttore and V.modello = R.modello and R.classe = P.classe));
             """;
+
+    public static int inserisciBiglietto(String codiceVolo, String passeggeroCF, String codiceSedile) {
+        return DBConnection.executeUpdate(INSERIMENTO_BIGLIETTO, codiceVolo, passeggeroCF, codiceSedile, codiceSedile,
+                codiceVolo);
+    }
+
     public static final String VISUALIZZA_LISTA_BIGLIETTI = """
             SELECT P.nome, P.cognome, P.codiceFiscale, AP.codiceIATA, AP.stato, AP.città, AD.codiceIATA,
                 AD.stato, AD.città, V.destinazione, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo,
@@ -157,4 +173,7 @@ public class Queries {
                 and PO.produttore = V.produttore and PO.modello = V.modello
                 and PO.codiceSedile = B.codiceSedile and P.codiceFiscale = ?;
             """;
+            public static ResultSet visualizzaListaBiglietti(String passeggeroCF){
+                return DBConnection.executeQuery(VISUALIZZA_LISTA_BIGLIETTI, passeggeroCF);
+            }
 }
