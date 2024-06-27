@@ -19,5 +19,5 @@ dependencies {
 // }
 
 application {
-    mainClass = "db_lab.App"
+    mainClass = "db2024.App"
 }

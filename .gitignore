@@ -1,6 +1,9 @@
 # libreoffice lock files
 .~lock*#
 
+# vscode stuff
+.vscode
+
 # gradle cache and build directories
 .gradle
 build
