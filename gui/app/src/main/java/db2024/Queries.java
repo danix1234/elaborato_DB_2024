@@ -6,22 +6,52 @@ public class Queries {
                 oraArrivo, produttore, modello, codiceAeroplano)
             VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                             """;
+
+    public static int inserisciVolo(int codiceVolo, String dataPartenza, String oraPartenza, String partenzaICAO,
+            String destinazioneICAO, String dataArrivo, String oraArrivo, String produttore, String modello,
+            int codiceAeroplano) {
+        return DBConnection.executeUpdate(INSERIMENTO_VOLO, codiceVolo, dataPartenza, oraPartenza, partenzaICAO,
+                destinazioneICAO, dataArrivo, oraArrivo, produttore, modello, codiceAeroplano);
+    }
+
     public static final String CANCELLAZIONE_VOLO = """
             DELETE FROM VOLO
             WHERE codiceVolo = ?
                 """;
+
+    public static int cancellaVolo(int codiceVolo) {
+        return DBConnection.executeUpdate(CANCELLAZIONE_VOLO, codiceVolo);
+    }
+
     public static final String INSERIMENTO_PERSONALE = """
             INSERT INTO PERSONALE (nome, cognome, codiceFiscale, dataNascita, dataAssunzione, ruolo)
             VALUES (?, ?, ?, ?, ?, ?)
                 """;
+
+    public static int inserisciPersonale(String nome, String cognome, String codiceFiscale, String dataNascita,
+            String dataAssunzione, String ruolo) {
+        return DBConnection.executeUpdate(INSERIMENTO_PERSONALE, nome, cognome, codiceFiscale, dataNascita,
+                dataAssunzione, ruolo);
+    }
+
     public static final String INSERIMENTO_LAVORATORE = """
             INSERT INTO LAVORATORE (personaleCF, codiceVolo)
             VALUES (?, ?)
                     """;
+
+    public static int inserisciLavoratore(String personaleCF, String codiceVolo) {
+        return DBConnection.executeUpdate(INSERIMENTO_LAVORATORE, personaleCF, codiceVolo);
+    }
+
     public static final String INSERIMENTO_AEROPLANO = """
             INSERT INTO AEROPLANO (produttore, modello, codiceSeriale, noleggio)
-            VALUES (?, ?)
+            VALUES (?, ?, ?, ?)
                 """;
+
+    public static int inserisciAeroplano(String produttore, String modello, int codiceSeriale, boolean noleggio) {
+        return DBConnection.executeUpdate(INSERIMENTO_LAVORATORE, produttore, modello, codiceSeriale, noleggio);
+    }
+
     public static final String VISUALIZZA_PROFITTO_MEDIO = """
             SELECT AVG(B1.profittiPerVolo)
             FROM (
@@ -32,6 +62,13 @@ public class Queries {
                     and (dataPartenza between ? and ?)
                 GROUP BY V.codiceVolo ) as B1(profittiPerVolo);
                 """;
+
+    public static int visualizzaProfittoMedio(String partenzaICAO, String destinazioneICAO, String dataInizio,
+            String dataFine) {
+        return DBConnection.executeUpdate(VISUALIZZA_PROFITTO_MEDIO, partenzaICAO, destinazioneICAO, destinazioneICAO,
+                partenzaICAO, dataInizio, dataFine);
+    }
+
     public static final String VISUALIZZA_TRATTE_TRAFFICATE = """
             SELECT TRATTE.partenza, TRATTE.destinazione, count(*)
             FROM (
@@ -70,7 +107,7 @@ public class Queries {
             EXCEPT
             SELECT codiceSedile
             FROM BIGLIETTO
-            WHERE codiceVolo = ?; 
+            WHERE codiceVolo = ?;
             """;
     public static final String INSERIMENTO_BIGLIETTO = """
             INSERT INTO BIGLIETTO (codiceVolo, passeggeroCF, codiceSedile, costoTotale)
@@ -78,7 +115,7 @@ public class Queries {
             FROM VOLO V, POSTO P, RAGGRUPPAMENTO R
             WHERE codiceSedile = ? and codiceVolo = ?
                 and V.produttore = P.produttore and V.modello = P.modello
-                and V.produttore = R.produttore and V.modello = R.modello and R.classe = P.classe)); 
+                and V.produttore = R.produttore and V.modello = R.modello and R.classe = P.classe));
             """;
     public static final String VISUALIZZA_LISTA_BIGLIETTI = """
             SELECT P.nome, P.cognome, P.codiceFiscale, AP.codiceIATA, AP.stato, AP.città, AD.codiceIATA,
@@ -88,6 +125,6 @@ public class Queries {
             WHERE P.codiceFiscale = B.passeggeroCF and B.codiceVolo = V.codiceVolo
                 and AP.codiceICAO = V.partenza and AD.codiceICAO = V.destinazione
                 and PO.produttore = V.produttore and PO.modello = V.modello
-                and PO.codiceSedile = B.codiceSedile and P.codiceFiscale = ?; 
+                and PO.codiceSedile = B.codiceSedile and P.codiceFiscale = ?;
             """;
 }
