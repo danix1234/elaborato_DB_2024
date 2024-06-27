@@ -1,13 +1,8 @@
 package db2024;
 
-import db2024.DBConnection;
-
 import java.awt.Toolkit;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 
 public final class App {
@@ -20,11 +15,18 @@ public final class App {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        var res_set = DBConnection.executeQuery(Queries.VISUALIZZA_PROFITTO_MEDIO, "LIMF", "LIPK", "LIPK", "LIMF","2024-01-01", "2024-01-02");
+        var res_set = Queries.visualizzaTratteTrafficate("2024-01-02", "2024-01-03");
 
-        System.out.println(res_set.getMetaData().getColumnCount());
-        while(res_set.next()){
-            System.out.println(res_set.getObject(1));
+        debugResultSet(res_set);
+    }
+
+    private static void debugResultSet(ResultSet set) throws SQLException {
+        final int col = set.getMetaData().getColumnCount();
+        while (set.next()) {
+            for (int i = 1; i <= col; i++) {
+                System.out.print(set.getObject(i)+ "\t");
+            }
+            System.out.println();
         }
     }
 }

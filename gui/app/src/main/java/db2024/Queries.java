@@ -1,5 +1,7 @@
 package db2024;
 
+import java.sql.ResultSet;
+
 public class Queries {
     public static final String INSERIMENTO_VOLO = """
             INSERT INTO VOLO (codiceVolo, dataPartenza, oraPartenza, partenza, destinazione, dataArrivo,
@@ -63,9 +65,9 @@ public class Queries {
                 GROUP BY V.codiceVolo ) as B1(profittiPerVolo);
                 """;
 
-    public static int visualizzaProfittoMedio(String partenzaICAO, String destinazioneICAO, String dataInizio,
+    public static ResultSet visualizzaProfittoMedio(String partenzaICAO, String destinazioneICAO, String dataInizio,
             String dataFine) {
-        return DBConnection.executeUpdate(VISUALIZZA_PROFITTO_MEDIO, partenzaICAO, destinazioneICAO, destinazioneICAO,
+        return DBConnection.executeQuery(VISUALIZZA_PROFITTO_MEDIO, partenzaICAO, destinazioneICAO, destinazioneICAO,
                 partenzaICAO, dataInizio, dataFine);
     }
 
@@ -79,11 +81,16 @@ public class Queries {
                 UNION ALL
                 SELECT V.destinazione as partenza, V.partenza as destinazione
                 FROM VOLO V
-                WHERE (dataPartenza between ? and ?)
+                WHERE dataPartenza between ? and ?
                     and partenza > destinazione) as TRATTE(partenza, destinazione)
             GROUP BY TRATTE.partenza, TRATTE.destinazione
-            ORDER BY count(*) desc;
+            ORDER BY 3 desc;
                 """;
+
+    public static ResultSet visualizzaTratteTrafficate(String dataInizio, String dataFine) {
+        return DBConnection.executeQuery(VISUALIZZA_TRATTE_TRAFFICATE, dataInizio, dataFine, dataInizio, dataFine);
+    }
+
     public static final String INSERIMENTO_PASSEGGERO = """
             INSERT INTO PASSEGGERO (nome, cognome, codiceFiscale, email, password)
             VALUES (?, ?, ?, ?, ?)
