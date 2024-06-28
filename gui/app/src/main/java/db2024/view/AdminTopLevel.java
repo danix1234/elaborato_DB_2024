@@ -39,7 +39,7 @@ public class AdminTopLevel extends TopLevel {
     private final JTextField center2 = new JTextField("cognome");
     private final JTextField center3 = new JTextField("codice fiscale");
     private final JTextField center4 = new JTextField("data nascita");
-    private final JTextField center5 = new JTextField("data assunziones");
+    private final JTextField center5 = new JTextField("data assunzione");
     private final JTextField center6 = new JTextField("ruolo");
     private final JButton center7 = new JButton("inserisci personale");
     private final JTextField center8 = new JTextField("produttore");
@@ -172,7 +172,7 @@ public class AdminTopLevel extends TopLevel {
             center2.setText("cognome");
             center3.setText("codice fiscale");
             center4.setText("data nascita");
-            center5.setText("data assunziones");
+            center5.setText("data assunzione");
             center6.setText("ruolo");
             center8.setText("produttore");
             center9.setText("modello");
