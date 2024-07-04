@@ -46,25 +46,31 @@ public class UserTopLevel extends TopLevel {
             ResultSet flights = null;
             try {
                 flights = Queries.ricercaVolo(dateFlight.getText(), fromFlight.getText(), toFlight.getText());
+                resultStatus.setText("la ricerca dei voli è andata a buon fine");
+                DBUtils.updateTable(results, flights);
+                if (results.getModel().getRowCount() == 0) {
+                    throw new IllegalStateException("search flights actually failed!");
+                }
             } catch (Throwable t) {
                 resultStatus.setText("ricerca voli fallita");
                 results.setModel(DBUtils.emptyTable());
                 return;
             }
-            resultStatus.setText("la ricerca dei voli è andata a buon fine");
-            DBUtils.updateTable(results, flights);
         });
         listSeats.addActionListener(e -> {
             ResultSet seats = null;
             try {
                 seats = Queries.ricercaPostiDisponibili(codeFlight1.getText());
+                resultStatus.setText("la ricerca dei sedili è andata a buon fine");
+                DBUtils.updateTable(results, seats);
+                if (results.getModel().getRowCount() == 0) {
+                    throw new IllegalStateException("search seats actually failed!");
+                }
             } catch (Throwable t) {
                 resultStatus.setText("ricerca sedili fallita");
                 results.setModel(DBUtils.emptyTable());
                 return;
             }
-            resultStatus.setText("la ricerca dei sedili è andata a buon fine");
-            DBUtils.updateTable(results, seats);
         });
         buyTicket.addActionListener(e -> {
             try {
@@ -83,13 +89,16 @@ public class UserTopLevel extends TopLevel {
             ResultSet tickets = null;
             try {
                 tickets = Queries.visualizzaListaBiglietti(codiceFiscale);
+                resultStatus.setText("ecco la lista dei tuoi biglietti");
+                DBUtils.updateTable(results, tickets);
+                if (results.getModel().getRowCount() == 0) {
+                    throw new IllegalStateException("no tickets available!");
+                }
             } catch (Throwable t) {
                 resultStatus.setText("ci sono stati problemi nel trovare i tuoi biglietti");
                 results.setModel(DBUtils.emptyTable());
                 return;
             }
-            resultStatus.setText("ecco la lista dei tuoi biglietti");
-            DBUtils.updateTable(results, tickets);
         });
         reset.addActionListener(e -> {
             dateFlight.setText("data");

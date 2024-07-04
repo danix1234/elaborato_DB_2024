@@ -138,25 +138,31 @@ public class AdminTopLevel extends TopLevel {
             try {
                 profitti = Queries.visualizzaProfittoMedio(east4.getText(), east5.getText(), east6.getText(),
                         east7.getText());
+                resultStatus.setText("il calcolo del profitto medio è andato a buon fine");
+                DBUtils.updateTable(results, profitti);
+                if (results.getModel().getRowCount() == 0) {
+                    throw new IllegalStateException("profits calculations actually failed!");
+                }
             } catch (Throwable t) {
                 resultStatus.setText("non è stato possibile calcolare il profitto medio");
                 results.setModel(DBUtils.emptyTable());
                 return;
             }
-            resultStatus.setText("il calcolo del profitto medio è andato a buon fine");
-            DBUtils.updateTable(results, profitti);
         });
         east11.addActionListener(e -> {
             ResultSet tratte = null;
             try {
                 tratte = Queries.visualizzaTratteTrafficate(east9.getText(), east10.getText());
+                resultStatus.setText("il calcolo delle tratte più trafficate è andato a buon fine");
+                DBUtils.updateTable(results, tratte);
+                if (results.getModel().getRowCount() == 0) {
+                    throw new IllegalStateException("trafficed routes calculations actually failed!");
+                }
             } catch (Throwable t) {
                 resultStatus.setText("non è stato possibile calcolare le tratte più trafficate");
                 results.setModel(DBUtils.emptyTable());
                 return;
             }
-            resultStatus.setText("il calcolo delle tratte più trafficate è andato a buon fine");
-            DBUtils.updateTable(results, tratte);
         });
         reset.addActionListener(e -> {
             west1.setText("data partenza");

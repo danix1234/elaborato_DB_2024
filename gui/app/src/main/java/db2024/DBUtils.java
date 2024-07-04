@@ -43,6 +43,10 @@ public class DBUtils {
             return;
         }
         final var cols = values.get(0).size();
+        if (rows == 1 && cols == 1 && values.get(0).get(0) == null) {
+            table.setModel(DBUtils.emptyTable());
+            return;
+        }
         final var tmp = new DefaultTableModel();
         tmp.setColumnIdentifiers(new Vector<String>(headers));
         tmp.setColumnCount(cols);
