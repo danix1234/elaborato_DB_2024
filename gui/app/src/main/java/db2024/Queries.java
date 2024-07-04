@@ -58,7 +58,7 @@ public class Queries {
     }
 
     public static final String VISUALIZZA_PROFITTO_MEDIO = """
-            SELECT AVG(B1.profittiPerVolo)
+            SELECT AVG(B1.profittiPerVolo) AS ProfittoMedio
             FROM (
                 SELECT SUM(B.costoTotale)
                 FROM VOLO V, BIGLIETTO B
@@ -75,7 +75,7 @@ public class Queries {
     }
 
     public static final String VISUALIZZA_TRATTE_TRAFFICATE = """
-            SELECT TRATTE.partenza, TRATTE.destinazione, count(*)
+            SELECT TRATTE.partenza AS Partenza, TRATTE.destinazione AS Destinazione, count(*) AS Conto
             FROM (
                 SELECT V.partenza as partenza, V.destinazione as destinazione
                 FROM VOLO V
@@ -105,7 +105,7 @@ public class Queries {
     }
 
     public static final String CONTROLLA_ACCOUNT_ESISTE = """
-            SELECT count(*)
+            SELECT count(*) AS Conto
             FROM PASSEGGERO
             WHERE email = ? and `password` = ?;
             """;
@@ -125,8 +125,9 @@ public class Queries {
     }
 
     public static final String RICERCA_VOLO = """
-            SELECT V.codiceVolo, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo, P.codiceIATA,
-                P.stato, P.citta, D.codiceIATA, D.stato, D.citta, V.produttore, V.modello
+            SELECT V.codiceVolo AS CodiceVolo, V.dataPartenza AS DataPartenza, V.oraPartenza AS OraPartenza, V.dataArrivo as DataArrivo, V.oraArrivo as OraArrivo,
+                P.codiceIATA as Partenza, P.stato as StatoPartenza, P.citta as CittaPartenza, D.codiceIATA as Destinazione, D.stato as StatoDestinazione, D.citta as CittaDestinazione,
+                V.produttore as ProduttoreAeroplano, V.modello as ModelloAeroplano
             FROM VOLO V, AEROPORTO P, AEROPORTO D
             WHERE V.partenza = P.codiceICAO and V.destinazione = D.codiceICAO
                 and dataPartenza = ? and P.codiceIATA = ? and D.codiceIATA = ?
@@ -137,7 +138,7 @@ public class Queries {
     }
 
     public static final String RICERCA_POSTI_DISPONIBILI = """
-            SELECT codiceSedile
+            SELECT codiceSedile as CodiceSedile
             FROM POSTO P, VOLO V
             WHERE P.produttore = V.produttore and P.modello = V.modello and V.codiceVolo = ?
             EXCEPT
@@ -165,9 +166,9 @@ public class Queries {
     }
 
     public static final String VISUALIZZA_LISTA_BIGLIETTI = """
-            SELECT V.codiceVolo, P.nome, P.cognome, P.codiceFiscale, AP.codiceIATA, AP.stato, AP.citta, AD.codiceIATA,
-                AD.stato, AD.citta, V.destinazione, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo,
-                B.codiceSedile, PO.classe, B.costoTotale
+            SELECT V.codiceVolo as CodiceVolo, P.nome as Nome, P.cognome as Cognome, P.codiceFiscale as CodiceFiscale, AP.codiceIATA as Partenza, AP.stato as StatoPartenza,
+                AP.citta as CittaPartenza, AD.codiceIATA as Destinazione, AD.stato as StatoDestinazione, AD.citta as CittaDestinazione, V.dataPartenza as DataPartenzaa,
+                V.oraPartenza as OraPartenza, V.dataArrivo as DataArrivo, V.oraArrivo as OraArrivo, B.codiceSedile as CodiceSedile, PO.classe as Classe, B.costoTotale as Costo
             FROM PASSEGGERO P, BIGLIETTO B, VOLO V, AEROPORTO AP, AEROPORTO AD, POSTO PO
             WHERE P.codiceFiscale = B.passeggeroCF and B.codiceVolo = V.codiceVolo
                 and AP.codiceICAO = V.partenza and AD.codiceICAO = V.destinazione

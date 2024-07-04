@@ -117,7 +117,7 @@ public class AdminTopLevel extends TopLevel {
                 results.setModel(DBUtils.emptyTable());
                 return;
             }
-            resultStatus.setText("il personale è stato inserito");
+            resultStatus.setText("l'aeroplano è stato inserito");
             results.setModel(DBUtils.emptyTable());
         });
         east3.addActionListener(e -> {
@@ -130,7 +130,7 @@ public class AdminTopLevel extends TopLevel {
                 results.setModel(DBUtils.emptyTable());
                 return;
             }
-            resultStatus.setText("il personale è stato assegnato al volo");
+            resultStatus.setText("il lavoratore è stato assegnato al volo");
             results.setModel(DBUtils.emptyTable());
         });
         east8.addActionListener(e -> {
@@ -144,7 +144,7 @@ public class AdminTopLevel extends TopLevel {
                 return;
             }
             resultStatus.setText("il calcolo del profitto medio è andato a buon fine");
-            results.setModel(DBUtils.createTable(profitti));
+            DBUtils.updateTable(results, profitti);
         });
         east11.addActionListener(e -> {
             ResultSet tratte = null;
