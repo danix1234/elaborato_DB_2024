@@ -57,7 +57,7 @@ public class UserTopLevel extends TopLevel {
         listSeats.addActionListener(e -> {
             ResultSet seats = null;
             try {
-                seats = Queries.ricercaPostiDisponibili(Integer.parseInt(codeFlight1.getText()));
+                seats = Queries.ricercaPostiDisponibili(codeFlight1.getText());
             } catch (Throwable t) {
                 resultStatus.setText("ricerca sedili fallita");
                 results.setModel(DBUtils.emptyTable());

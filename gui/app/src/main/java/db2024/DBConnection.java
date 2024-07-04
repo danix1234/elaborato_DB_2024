@@ -13,6 +13,13 @@ import java.util.List;
 
 public class DBConnection {
     private static final Connection SINGLETON = initConnection();
+    private static final boolean DEBUG = false;
+
+    private static final void debug(Throwable t) {
+        if (DEBUG) {
+            t.printStackTrace();
+        }
+    }
 
     public static final Connection getConnection() {
         if (SINGLETON == null) {
@@ -29,26 +36,30 @@ public class DBConnection {
         try {
             lines = Files.readAllLines(Paths.get(System.getProperty("user.home") + "/.compagnia_aerea"));
         } catch (IOException e) {
+            debug(e);
             throw new IllegalStateException("file '.compagnia_aerea' wasn't found in the home directory");
         }
-        if (lines.size() > 0){
+        if (lines.size() > 0) {
             username = lines.get(0);
         }
-        if (lines.size() > 1){
+        if (lines.size() > 1) {
             password = lines.get(1);
         }
         try {
             res = DriverManager.getConnection("jdbc:mysql://localhost:3306/compagnia_aerea", username, password);
         } catch (Exception e) {
-            throw new IllegalStateException("couldn't initialize connection (check if username and password are correct)");
+            debug(e);
+            throw new IllegalStateException(
+                    "couldn't initialize connection (check if username and password are correct)");
         }
         return res;
     }
-    
-    public static Statement emptyStmt(){
+
+    public static Statement emptyStmt() {
         try {
             return SINGLETON.createStatement();
         } catch (SQLException e) {
+            debug(e);
             throw new IllegalStateException("could not create empty statement");
         }
     }
@@ -66,47 +77,52 @@ public class DBConnection {
                 try {
                     statement.close();
                 } catch (SQLException e1) {
+                    debug(e1);
                     throw new IllegalStateException("could not close statement");
                 }
+                debug(e);
                 throw new IllegalStateException("could not prepare statement");
             }
         }
         return statement;
     }
-    
-    public static ResultSet executeQuery(String query){
+
+    public static ResultSet executeQuery(String query) {
         var stmt = emptyStmt();
         try {
             return stmt.executeQuery(query);
         } catch (SQLException e) {
+            debug(e);
             throw new IllegalStateException("could not execute query");
         }
     }
-    
-    public static ResultSet executeQuery(String query, Object...values){
+
+    public static ResultSet executeQuery(String query, Object... values) {
         var prepsmtm = prepareStmt(query, values);
         try {
             return prepsmtm.executeQuery();
         } catch (SQLException e) {
-            e.printStackTrace();
+            debug(e);
             throw new IllegalStateException("could not execute prepared query");
         }
     }
 
-    public static int executeUpdate(String query){
+    public static int executeUpdate(String query) {
         var stmt = emptyStmt();
         try {
             return stmt.executeUpdate(query);
         } catch (SQLException e) {
+            debug(e);
             throw new IllegalStateException("could not execute query");
         }
     }
-    
-    public static int executeUpdate(String query, Object...values){
+
+    public static int executeUpdate(String query, Object... values) {
         var prepsmtm = prepareStmt(query, values);
         try {
             return prepsmtm.executeUpdate();
         } catch (SQLException e) {
+            debug(e);
             throw new IllegalStateException("could not execute prepared query");
         }
     }

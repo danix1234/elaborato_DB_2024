@@ -68,7 +68,7 @@ public class AdminTopLevel extends TopLevel {
             try {
                 if (Queries.inserisciVolo(west1.getText(), west2.getText(), west3.getText(), west4.getText(),
                         west5.getText(), west6.getText(), west7.getText(), west8.getText(),
-                        Integer.parseInt(west9.getText())) != 1) {
+                        west9.getText()) != 1) {
                     throw new IllegalStateException("could not add flight");
                 }
             } catch (Throwable t) {
@@ -81,7 +81,7 @@ public class AdminTopLevel extends TopLevel {
         });
         west12.addActionListener(e -> {
             try {
-                if (Queries.cancellaVolo(Integer.parseInt(west11.getText())) != 1) {
+                if (Queries.cancellaVolo(west11.getText()) != 1) {
                     throw new IllegalStateException("could not delete flight");
                 }
             } catch (Throwable t) {
@@ -109,7 +109,7 @@ public class AdminTopLevel extends TopLevel {
         center12.addActionListener(e -> {
             try {
                 if (Queries.inserisciAeroplano(center8.getText(), center9.getText(),
-                        Integer.parseInt(center10.getText()), Boolean.parseBoolean(center11.getText())) != 1) {
+                        center10.getText(), center11.getText()) != 1) {
                     throw new IllegalStateException("could not add airplanes");
                 }
             } catch (Throwable t) {
@@ -136,7 +136,8 @@ public class AdminTopLevel extends TopLevel {
         east8.addActionListener(e -> {
             ResultSet profitti = null;
             try {
-                profitti = Queries.visualizzaProfittoMedio(east4.getText(), east5.getText(), east6.getText(), east7.getText());
+                profitti = Queries.visualizzaProfittoMedio(east4.getText(), east5.getText(), east6.getText(),
+                        east7.getText());
             } catch (Throwable t) {
                 resultStatus.setText("non è stato possibile calcolare il profitto medio");
                 results.setModel(DBUtils.emptyTable());

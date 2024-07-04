@@ -31,7 +31,7 @@ create table AEROPORTO (
      codiceICAO char(4) not null,
      codiceIATA char(3) not null,
      stato varchar(100) not null,
-     città varchar(100) not null,
+     citta varchar(100) not null,
      constraint IDAEROPORTO primary key (codiceICAO),
      constraint IDAEROPORTO_1 unique (codiceIATA));
 

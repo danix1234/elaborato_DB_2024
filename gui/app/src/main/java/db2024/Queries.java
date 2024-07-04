@@ -14,7 +14,7 @@ public class Queries {
 
     public static int inserisciVolo(String dataPartenza, String oraPartenza, String partenzaICAO,
             String destinazioneICAO, String dataArrivo, String oraArrivo, String produttore, String modello,
-            int codiceAeroplano) {
+            String codiceAeroplano) {
         return DBConnection.executeUpdate(INSERIMENTO_VOLO, dataPartenza, oraPartenza, partenzaICAO,
                 destinazioneICAO, dataArrivo, oraArrivo, produttore, modello, codiceAeroplano);
     }
@@ -24,7 +24,7 @@ public class Queries {
             WHERE codiceVolo = ?
                 """;
 
-    public static int cancellaVolo(int codiceVolo) {
+    public static int cancellaVolo(String codiceVolo) {
         return DBConnection.executeUpdate(CANCELLAZIONE_VOLO, codiceVolo);
     }
 
@@ -53,8 +53,8 @@ public class Queries {
             VALUES (?, ?, ?, ?)
                 """;
 
-    public static int inserisciAeroplano(String produttore, String modello, int codiceSeriale, boolean noleggio) {
-        return DBConnection.executeUpdate(INSERIMENTO_LAVORATORE, produttore, modello, codiceSeriale, noleggio);
+    public static int inserisciAeroplano(String produttore, String modello, String codiceSeriale, String noleggio) {
+        return DBConnection.executeUpdate(INSERIMENTO_AEROPLANO, produttore, modello, codiceSeriale, noleggio);
     }
 
     public static final String VISUALIZZA_PROFITTO_MEDIO = """
@@ -126,7 +126,7 @@ public class Queries {
 
     public static final String RICERCA_VOLO = """
             SELECT V.codiceVolo, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo, P.codiceIATA,
-                P.stato, P.città, D.codiceIATA, D.stato, D.città, V.produttore, V.modello
+                P.stato, P.citta, D.codiceIATA, D.stato, D.citta, V.produttore, V.modello
             FROM VOLO V, AEROPORTO P, AEROPORTO D
             WHERE V.partenza = P.codiceICAO and V.destinazione = D.codiceICAO
                 and dataPartenza = ? and P.codiceIATA = ? and D.codiceIATA = ?
@@ -146,7 +146,7 @@ public class Queries {
             WHERE codiceVolo = ?;
             """;
 
-    public static ResultSet ricercaPostiDisponibili(int codiceVolo) {
+    public static ResultSet ricercaPostiDisponibili(String codiceVolo) {
         return DBConnection.executeQuery(RICERCA_POSTI_DISPONIBILI, codiceVolo, codiceVolo);
     }
 
@@ -165,8 +165,8 @@ public class Queries {
     }
 
     public static final String VISUALIZZA_LISTA_BIGLIETTI = """
-            SELECT V.codiceVolo, P.nome, P.cognome, P.codiceFiscale, AP.codiceIATA, AP.stato, AP.città, AD.codiceIATA,
-                AD.stato, AD.città, V.destinazione, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo,
+            SELECT V.codiceVolo, P.nome, P.cognome, P.codiceFiscale, AP.codiceIATA, AP.stato, AP.citta, AD.codiceIATA,
+                AD.stato, AD.citta, V.destinazione, V.dataPartenza, V.oraPartenza, V.dataArrivo, V.oraArrivo,
                 B.codiceSedile, PO.classe, B.costoTotale
             FROM PASSEGGERO P, BIGLIETTO B, VOLO V, AEROPORTO AP, AEROPORTO AD, POSTO PO
             WHERE P.codiceFiscale = B.passeggeroCF and B.codiceVolo = V.codiceVolo
@@ -179,7 +179,7 @@ public class Queries {
         return DBConnection.executeQuery(VISUALIZZA_LISTA_BIGLIETTI, passeggeroCF);
     }
 
-    public static final String OTTIENI_DATI_UTENTE = """ 
+    public static final String OTTIENI_DATI_UTENTE = """
             SELECT nome, cognome, codiceFiscale
             FROM PASSEGGERO
             WHERE email = ?
@@ -189,7 +189,7 @@ public class Queries {
         var res = DBConnection.executeQuery(OTTIENI_DATI_UTENTE, email);
         try {
             res.next();
-            return List.of(res.getString(1),res.getString(2),res.getString(3));
+            return List.of(res.getString(1), res.getString(2), res.getString(3));
         } catch (Exception e) {
             throw new IllegalStateException("could not obtain user data from email");
         }
